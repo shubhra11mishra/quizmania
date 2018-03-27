@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface ExaminerRepository extends CrudRepository<Examiner, Integer>{
-	public Examiner findByEmail(String email);
+	public void deleteByEmail(String email);
 }

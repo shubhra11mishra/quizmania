@@ -14,14 +14,14 @@ public class ExaminerController {
 	@Autowired
 	ExaminerService examinerService;
 	
-	@RequestMapping(method=RequestMethod.POST, value="/login")
-	public Examiner login(@RequestBody Examiner examiner) {		
-		return examinerService.getExaminerByEmail(examiner);
-	}
-	
 	@RequestMapping(method=RequestMethod.POST, value="/register")
 	public Examiner register(@RequestBody Examiner examiner) {
 		return examinerService.createExaminer(examiner);
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/delete")
+	public void delete(@RequestBody Examiner examiner) {
+		examinerService.delete(examiner);
 	}
 	
 }
