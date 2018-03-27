@@ -1,0 +1,103 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="">Quizmania</a>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <ul class="nav nav-tabs">
+          <li role="presentation" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+          <li role="presentation" routerLinkActive="active"><a routerLink="/registeradmin">Register Admin</a></li>
+          <li role="presentation" routerLinkActive="active"><a routerLink="/registerexaminer">Register Examiner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form class="form-signin" (ngSubmit)="registerExaminer(f)" #f="ngForm">
+    <h2 class="form-signin-heading">Register Examiner</h2>
+
+    <br>
+    <label for="firstname" class="sr-only">First Name</label>
+    <input 
+      type="text" 
+      id="firstname" 
+      name="firstname" 
+      class="form-control" 
+      placeholder="First Name"
+      ngModel 
+      required 
+      autofocus
+      #firstName="ngModel">
+    <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Please enter First Name</span>
+
+    <br>
+    <label for="lastname" class="sr-only">Last Name</label>
+    <input 
+      type="text" 
+      id="lastname" 
+      name="lastname" 
+      class="form-control" 
+      placeholder="Last Name" 
+      ngModel 
+      required
+      #lastName="ngModel">
+    <span class="help-block" *ngIf="!lastName.valid && lastName.touched">Please enter Last Name</span>
+
+    <br>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input 
+      type="email" 
+      id="inputEmail" 
+      name="inputEmail" 
+      class="form-control" 
+      placeholder="Email address"
+      ngModel 
+      required
+      email
+      #email="ngModel">
+    <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+
+    <br>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input 
+      type="password" 
+      id="inputPassword" 
+      name="inputPassword" 
+      class="form-control" 
+      placeholder="Password"
+      minlength="8" 
+      ngModel
+      required
+      #password="ngModel">
+    <span class="help-block" *ngIf="!password.valid && password.touched">Password must be 8 characters long</span>
+
+    <br>
+    <label for="confirmPassword" class="sr-only">Confirm Password</label>
+    <input 
+      type="password" 
+      id="confirmPassword" 
+      name="confirmPassword" 
+      class="form-control" 
+      placeholder="Confirm Password"
+      minlength="8"
+      ngModel 
+      required
+      #confirmpassword="ngModel">
+    <span class="help-block" *ngIf="!confirmpassword.valid && confirmpassword.touched">Password must be 8 characters long</span>
+
+
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!f.valid">Register</button>
+  
+  </form>
+  <br>
+  <div class="alert alert-success" role="alert" *ngIf="successfull">Examiner Registered Successfully!!!</div>
+      </div>
+    </div>
+  </div>

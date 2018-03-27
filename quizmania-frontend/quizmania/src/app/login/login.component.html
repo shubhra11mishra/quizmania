@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="">Quizmania</a>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <ul class="nav nav-tabs">
+          <li role="presentation" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+          <li role="presentation" routerLinkActive="active"><a routerLink="/registeradmin">Register Admin</a></li>
+          <li role="presentation" routerLinkActive="active"><a routerLink="/registerexaminer">Register Examiner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form class="form-signin" (ngSubmit)="login(f)" #f="ngForm">
+              <h2 class="form-signin-heading">Please sign in</h2>
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input 
+              type="email" 
+              id="inputEmail" 
+              name="inputEmail" 
+              class="form-control" 
+              placeholder="Email address"
+              ngModel 
+              required 
+              autofocus
+              email
+              #email="ngModel">
+              <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+              <br>
+
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input 
+              type="password" 
+              id="inputPassword" 
+              name="inputPassword" 
+              class="form-control" 
+              placeholder="Password"
+              ngModel 
+              required
+              #password="ngModel">
+              <span class="help-block" *ngIf="!password.valid && password.touched">Please enter password</span>
+              <br>
+              <button class="btn btn-lg btn-primary btn-block" type="submit"
+              [disabled]="!f.valid">Sign in</button>
+            </form>
+            <br>
+            <div class="alert alert-danger" role="alert" *ngIf="notfound">Email/Password not found</div>
+      </div>
+    </div>
+  </div>
