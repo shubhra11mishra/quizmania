@@ -1,5 +1,7 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+node_modules/*
+quizmania/src/main/resources/*
 
 ### STS ###
 .apt_generated

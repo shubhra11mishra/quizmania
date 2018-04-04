@@ -14,6 +14,7 @@ import { LoginService } from './login/login.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ExaminerDashboardComponent } from './examiner-dashboard/examiner-dashboard.component';
+import { CreatequizComponent } from './createquiz/createquiz.component';
 
 const appRoutes: Routes = [
   { path:'',component:LandingpageComponent },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     RegisterexaminerComponent,
     LandingpageComponent,
     AdminDashboardComponent,
-    ExaminerDashboardComponent
+    ExaminerDashboardComponent,
+    CreatequizComponent
   ],
   imports: [
     BrowserModule,
