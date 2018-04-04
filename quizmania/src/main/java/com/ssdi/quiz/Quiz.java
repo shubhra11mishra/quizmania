@@ -19,8 +19,11 @@ public class Quiz {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer quizID;
+	// title for quiz, 100 characters limit
 	private String title;
+	
 	private int timeLimit;
+	// subject for quiz, 50-chars limit 
 	private String category;
     private String status;
     @OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
