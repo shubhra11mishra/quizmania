@@ -8,6 +8,7 @@
                 <th class="text-center">Status</th>
                 <th class="text-center">Time Limit</th>
                 <th class="text-center">Title</th>
+                
             </tr>
             </thead>
             <tbody>
@@ -20,6 +21,9 @@
                 <td class="text-center" style="width: 200px;">{{post.status}}</td>
                 <td class="text-center" style="width: 200px;">{{post.timeLimit}}</td>
                 <td class="text-center" style="width: 200px;">{{post.title}}</td>
+                <li role="presentation" routerLinkActive="active"><a routerLink="/#">View</a></li>
+                <li role="presentation" routerLinkActive="active"><a routerLink="/#">Accept</a></li>
+                <li role="presentation" routerLinkActive="active"><a routerLink="/#">Reject</a></li>
             </tr>
             </tbody>
         </table>

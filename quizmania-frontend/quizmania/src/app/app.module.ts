@@ -19,6 +19,7 @@ import { ExaminerDashboardComponent } from './examiner-dashboard/examiner-dashbo
 import { CreatequizComponent } from './createquiz/createquiz.component';
 import { PendingQuizComponent } from './pending-quiz/pending-quiz.component';
 import { ApprovedQuizComponent } from './approved-quiz/approved-quiz.component';
+import { ViewQuizComponent } from './view-quiz/view-quiz.component';
 
 
 
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     ExaminerDashboardComponent,
     CreatequizComponent,
     PendingQuizComponent,
-    ApprovedQuizComponent
+    ApprovedQuizComponent,
+    ViewQuizComponent
   ],
   imports: [
     BrowserModule,
