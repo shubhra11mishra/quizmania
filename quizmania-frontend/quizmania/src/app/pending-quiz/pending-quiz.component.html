@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th class="text-center">Quiz ID</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Time Limit</th>
+                <th class="text-center">Title</th>
+            </tr>
+            </thead>
+            <tbody>
+                    <!-- <div *ngFor="let b of quizzes">
+                            {{b.quizID}}
+                          </div> -->
+            <tr *ngFor="let post of quizzes">
+                <td class="text-center" style="width: 15px;">{{post.quizID}}</td>
+                <td class="text-center" style="width: 15px;">{{post.category}}</td>
+                <td class="text-center" style="width: 200px;">{{post.status}}</td>
+                <td class="text-center" style="width: 200px;">{{post.timeLimit}}</td>
+                <td class="text-center" style="width: 200px;">{{post.title}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -17,6 +17,11 @@ public class QuizService {
 		// TODO Auto-generated method stub
 		quizRepository.save(quiz);
 	}
+	
+	public void viewQuiz() {
+		// TODO Auto-generated method stub
+		quizRepository.findAll();
+	}
 
 	
 
