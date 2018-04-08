@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../shared';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({

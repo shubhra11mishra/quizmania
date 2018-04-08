@@ -19,7 +19,7 @@ import { ExaminerDashboardComponent } from './examiner-dashboard/examiner-dashbo
 import { CreatequizComponent } from './createquiz/createquiz.component';
 import { PendingQuizComponent } from './pending-quiz/pending-quiz.component';
 import { ApprovedQuizComponent } from './approved-quiz/approved-quiz.component';
-import { ViewQuizComponent } from './view-quiz/view-quiz.component';
+import { ViewQuestionComponent } from './view-question/view-question.component';
 
 
 
@@ -33,7 +33,8 @@ const appRoutes: Routes = [
   { path:'admin-dashboard', component:AdminDashboardComponent},
   { path:'examiner-dashboard', component:ExaminerDashboardComponent},
   { path:'pending-quiz', component:PendingQuizComponent},
-  { path:'approved-quiz', component:ApprovedQuizComponent}
+  { path:'approved-quiz', component:ApprovedQuizComponent},
+  { path:'view-question/:id', component:ViewQuestionComponent}
 ];
 
 @NgModule({
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
     CreatequizComponent,
     PendingQuizComponent,
     ApprovedQuizComponent,
-    ViewQuizComponent
+    ViewQuestionComponent
   ],
   imports: [
     BrowserModule,
