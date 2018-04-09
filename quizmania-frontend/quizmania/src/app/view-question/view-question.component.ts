@@ -23,4 +23,4 @@ export class ViewQuestionComponent implements OnInit {
   }
   }
 
-}
+

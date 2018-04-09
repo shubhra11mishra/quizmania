@@ -22,8 +22,8 @@
                 <td class="text-center" style="width: 200px;">{{post.timeLimit}}</td>
                 <td class="text-center" style="width: 200px;">{{post.title}}</td>
                 <li role="presentation" routerLinkActive="active"><a routerLink='/view-question/{{post.quizID}}'>View</a></li>
-                <li role="presentation" routerLinkActive="active"><a routerLink="/#">Accept</a></li>
-                <li role="presentation" routerLinkActive="active"><a routerLink="/#">Reject</a></li>
+                <li role="presentation" routerLinkActive="active"><a routerLink='/quiz-status/{{post.quizID}}'>Accept</a></li>
+                <li role="presentation" routerLinkActive="active"><a routerLink='/quiz-status-no/{{post.quizID}}'>Reject</a></li>
             </tr>
             </tbody>
         </table>
