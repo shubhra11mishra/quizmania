@@ -1,9 +1,10 @@
-package com.ssdi.user;
-
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+package com.ssdi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ssdi.dao.UserRepository;
+import com.ssdi.model.User;
 
 @Service
 public class UserService {

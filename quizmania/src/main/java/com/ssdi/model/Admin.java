@@ -1,12 +1,13 @@
-package com.ssdi.user.admin;
+package com.ssdi.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
-import com.ssdi.user.User;
-import com.ssdi.user.UserType;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Admin extends User{
+	
 	private String passcode;
 	
 	public Admin() {

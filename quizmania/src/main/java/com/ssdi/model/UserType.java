@@ -1,4 +1,4 @@
-package com.ssdi.user;
+package com.ssdi.model;
 
 public enum UserType {
 ADMIN, EXAMINER, EXAMINEE

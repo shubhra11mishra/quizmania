@@ -1,4 +1,4 @@
-package com.ssdi.user.admin;
+package com.ssdi.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -19,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
-
+import com.ssdi.model.Admin;
 
 public class AdminControllerTest extends ContextLoaderTest{
 
@@ -38,16 +38,16 @@ public class AdminControllerTest extends ContextLoaderTest{
 
 	@Test
 	public void testAdminCreation() throws Exception {
-		Admin admin = new Admin("TestUserFirstName", "TestUserLastName", "TestUserEmail", "TestUserPassword",
-				"TestUserPasscode");
+		Admin admin = new Admin("TestUserAdminFirstName", "TestUserLastName", "TestUserAdminEmail", "TestUserPassword",
+				"123456");
 		
-		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
+		/*this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());*/
 
 		this.mockMvc.perform(post("/quizmania/admin/register").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
 		
-		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
+		/*this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());*/
 	}
 }

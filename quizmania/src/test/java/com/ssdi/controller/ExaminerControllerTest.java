@@ -1,4 +1,4 @@
-package com.ssdi.user.examiner;
+package com.ssdi.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -14,6 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
+import com.ssdi.model.Examiner;
 
 public class ExaminerControllerTest extends ContextLoaderTest{
 
@@ -34,13 +35,13 @@ public class ExaminerControllerTest extends ContextLoaderTest{
 	public void testExaminerCreation() throws Exception {
 		Examiner examiner = new Examiner("TestUserFirstName", "TestUserLastName", "TestUserEmail", "TestUserPassword");
 		
-		this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());
+		/*this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());*/
 
 		this.mockMvc.perform(post("/quizmania/examiner/register").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());
 		
-		this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());
+		/*this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());*/
 	}
 }

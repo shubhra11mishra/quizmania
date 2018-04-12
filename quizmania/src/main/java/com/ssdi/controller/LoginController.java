@@ -1,4 +1,4 @@
-package com.ssdi.login;
+package com.ssdi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssdi.user.User;
+import com.ssdi.model.User;
+import com.ssdi.service.LoginService;
 
 @RestController
 @RequestMapping("/quizmania")
