@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import com.ssdi.question.Question;
+import com.ssdi.user.examiner.Examiner;
 
 @Entity
 public class Quiz {
@@ -26,7 +28,37 @@ public class Quiz {
 	// subject for quiz, 50-chars limit 
 	private String category;
     private String status;
-    @OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne
+    private Examiner examiner; 
+    /**
+	 * @return the examiner
+	 */
+	public Examiner getExaminer() {
+		return examiner;
+	}
+
+	/**
+	 * @param examiner the examiner to set
+	 */
+	public void setExaminer(Examiner examiner) {
+		this.examiner = examiner;
+	}
+
+	/**
+	 * @return the questions
+	 */
+	public Collection<Question> getQuestions() {
+		return questions;
+	}
+
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(Collection<Question> questions) {
+		this.questions = questions;
+	}
+
+	@OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Collection<Question> questions;
 	
     public Quiz() {
@@ -88,13 +120,8 @@ public class Quiz {
 		this.category = category;
 	}
 	
-	//public void addQuestion(Question q) {
-		//questions.add(q);
-	//}
-	
-	//public ArrayList<Question> getQuestions(){
-		//return questions;
-	//}
-	
+	public void addQuestion(Question q) {
+		questions.add(q);
+	}
 	
 }

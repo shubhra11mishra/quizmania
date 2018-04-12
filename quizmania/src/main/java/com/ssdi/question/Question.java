@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,15 +23,15 @@ public class Question {
 	private String correctAnswer;
 	private int points;
     @ManyToOne
-	private Quiz quizID;
+	private Quiz quiz;
 
-	public Question(Integer questionID, String body, String correctAnswer, int points, Quiz quizID) {
+	public Question(Integer questionID, String body, String correctAnswer, int points, Quiz quiz) {
 		super();
 		this.questionID = questionID;
 		this.body = body;
 		this.correctAnswer = correctAnswer;
 		this.points = points;
-		this.quizID = quizID;
+		this.quiz = quiz;
 	}
 	
 	@JsonIgnore
@@ -63,10 +62,10 @@ public class Question {
 	
 	
 	public Quiz getQuizID() {
-		return quizID;
+		return quiz;
 	}
-	public void setQuizID(Quiz quizID) {
-		this.quizID = quizID;
+	public void setQuizID(Quiz quiz) {
+		this.quiz = quiz;
 	}
 	
 	

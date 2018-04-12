@@ -48,9 +48,9 @@
               #password="ngModel">
               <span class="help-block" *ngIf="!password.valid && password.touched">Please enter password</span>
               <br>
-              <button class="btn btn-lg btn-primary btn-block" type="submit"
-              [disabled]="!f.valid">Sign in</button>
-            </form>
+				<button class="btn btn-lg btn-primary btn-block" type="submit"
+					[disabled]="!f.valid">Sign in</button>
+			</form>
             <br>
             <div class="alert alert-danger" role="alert" *ngIf="notfound">Email/Password not found</div>
       </div>
