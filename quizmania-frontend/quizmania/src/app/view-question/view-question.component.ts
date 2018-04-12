@@ -10,16 +10,22 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ViewQuestionComponent implements OnInit {
   id;
-  quizzes: Array<any>;
+  // quizzes: Array<any>;
+  quizzes;
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
-    console.log(this.route.params._value.id);
-    this.http.get('http://localhost:8080/quizmania/examiner/viewQuestion/'+ this.route.params._value.id ).subscribe(data => {
-      this.quizzes = data;
-      console.log(this.quizzes);
+    
+
+    if(this.route.params){
+     
+      this.http.get('http://localhost:8080/quizmania/examiner/viewQuestion/'+ this.route.params['_value']['id'] ).subscribe(data => {
       
-    });
+        this.quizzes = data;
+        
+      });
+    }
+
   }
   }
 
