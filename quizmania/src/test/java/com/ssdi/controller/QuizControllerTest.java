@@ -26,8 +26,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
 import com.ssdi.controller.QuizController;
 import com.ssdi.model.Quiz;
-import com.ssdi.user.examiner.*;
-import com.ssdi.quiz.*;
 
 public class QuizControllerTest extends ContextLoaderTest{
 

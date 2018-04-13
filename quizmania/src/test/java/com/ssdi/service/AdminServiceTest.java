@@ -12,11 +12,11 @@ import com.ssdi.model.Admin;
 import com.ssdi.model.AdminPasscode;
 
 import mockit.*;
-//import mockit.Expectations;
-//import mockit.Injectable;
-//import mockit.Tested;
-//import mockit.Verifications;
-//import mockit.integration.junit4.JMockit;
+import mockit.Expectations;
+import mockit.Injectable;
+import mockit.Tested;
+import mockit.Verifications;
+import mockit.integration.junit4.JMockit;
 
 @RunWith(JMockit.class)
 public class AdminServiceTest {

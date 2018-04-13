@@ -17,9 +17,9 @@ public class QuizService {
 	@Autowired
 	private QuizRepository quizRepository;
 
-	public void createQuiz(Quiz quiz) {
+	public Quiz createQuiz(Quiz quiz) {
 		// TODO Auto-generated method stub
-		quizRepository.save(quiz);
+		return quizRepository.save(quiz);
 	}
 	
 	public void viewQuiz() {

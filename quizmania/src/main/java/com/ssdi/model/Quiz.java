@@ -32,11 +32,12 @@ public class Quiz {
 		questions = new ArrayList<Question>();
 	}
     
-	public Quiz(String title, int timeLimit, String status) {
+	public Quiz(String title, int timeLimit, String category, String status) {
 		super();
 		this.title = title;
 		this.timeLimit = timeLimit;
 		this.status=status;
+		this.category = category;
 		
 	}
 	
@@ -93,6 +94,24 @@ public class Quiz {
 	//public ArrayList<Question> getQuestions(){
 		//return questions;
 	//}
+	
+	@Override 
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		} 
+		if (!(o instanceof Quiz)) {
+			return false; 
+		}
+		
+		Quiz q = (Quiz) o;
+		if (q.getTitle().equals(title) && q.getTimeLimit() == timeLimit && q.getStatus().equals(status) && q.getCategory().equals(category)) {
+			return true;
+		} else { 
+			return false;
+		}
+		
+	}
 	
 	
 }

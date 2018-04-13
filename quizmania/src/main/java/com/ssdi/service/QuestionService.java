@@ -27,9 +27,5 @@ public class QuestionService {
 		// TODO Auto-generated method stub
 		return questionRepository.findByQuizID(id);
 	}
-	
-	
-
-	
 
 }
