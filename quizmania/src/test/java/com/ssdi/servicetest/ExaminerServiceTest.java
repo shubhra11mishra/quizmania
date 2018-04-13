@@ -1,5 +1,4 @@
 package com.ssdi.servicetest;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,7 +36,7 @@ public class ExaminerServiceTest {
 		
 		examinerService.createExaminer(examiner);
 		examinerService.delete(examiner);
-	}
+}
 	
 	
 }

@@ -1,9 +1,6 @@
 package com.ssdi.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Admin extends User{
