@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import {HttpModule} from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
@@ -24,12 +24,9 @@ import { QuizStatusComponent } from './quiz-status/quiz-status.component';
 import { QuizStatusNoComponent } from './quiz-status-no/quiz-status-no.component';
 
 
-
-
-
 const appRoutes: Routes = [
   { path:'',component:LandingpageComponent },
-  {  path:'login', component:LoginComponent },
+  { path:'login', component:LoginComponent },
   { path:'registeradmin', component:RegisteradminComponent},
   { path:'registerexaminer', component:RegisterexaminerComponent},
   { path:'admin-dashboard', component:AdminDashboardComponent},
@@ -62,7 +59,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpModule,
-    HttpClientModule
+    ReactiveFormsModule,
   ],
   providers: [RegisterExaminerService, RegisterAdminService, LoginService],
   bootstrap: [AppComponent]
