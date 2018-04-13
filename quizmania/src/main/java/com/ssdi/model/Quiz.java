@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -24,7 +25,10 @@ public class Quiz {
 	// subject for quiz, 50-chars limit 
 	private String category;
     private String status;
-    @OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne
+    private Examiner examiner; 
+    
+	@OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Collection<Question> questions;
 	
     public Quiz() {
@@ -86,13 +90,37 @@ public class Quiz {
 		this.category = category;
 	}
 	
-	//public void addQuestion(Question q) {
-		//questions.add(q);
-	//}
+	public void addQuestion(Question q) {
+		questions.add(q);
+	}
 	
-	//public ArrayList<Question> getQuestions(){
-		//return questions;
-	//}
-	
+	/**
+	 * @return the examiner
+	 */
+	public Examiner getExaminer() {
+		return examiner;
+	}
+
+	/**
+	 * @param examiner the examiner to set
+	 */
+	public void setExaminer(Examiner examiner) {
+		this.examiner = examiner;
+	}
+
+	/**
+	 * @return the questions
+	 */
+	public Collection<Question> getQuestions() {
+		return questions;
+	}
+
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(Collection<Question> questions) {
+		this.questions = questions;
+	}
+
 	
 }

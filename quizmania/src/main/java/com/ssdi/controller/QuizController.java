@@ -40,7 +40,7 @@ public class QuizController {
 	QuizRepository quizRepository;
 	@Autowired ObjectMapper objectMapper;
 	
-	@RequestMapping(method=RequestMethod.POST, value="/quiz")
+	@RequestMapping(method=RequestMethod.POST, value="/examiner/createquiz")
 	public void createQuiz(@RequestBody Quiz quiz) {		
 		 quizService.createQuiz(quiz);
 	}

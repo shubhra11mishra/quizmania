@@ -1,4 +1,4 @@
-export interface IQuiz {
+export class Quiz {
     quizId: number;
     title: string;
     timeLimit: number;

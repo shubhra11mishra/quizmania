@@ -25,13 +25,13 @@ public class Question {
     @ManyToOne
 	private Quiz quizID;
 
-	public Question(Integer questionID, String body, String correctAnswer, int points, Quiz quizID) {
+	public Question(Integer questionID, String body, String correctAnswer, int points, Quiz quiz) {
 		super();
 		this.questionID = questionID;
 		this.body = body;
 		this.correctAnswer = correctAnswer;
 		this.points = points;
-		this.quizID = quizID;
+		this.quizID = quiz;
 	}
 	
 	@JsonIgnore
@@ -44,18 +44,23 @@ public class Question {
 	public String getBody() {
 		return body;
 	}
+	
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
 	public String getCorrectAnswer() {
 		return correctAnswer;
 	}
+	
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
+	
 	public int getPoints() {
 		return points;
 	}
+	
 	public void setPoints(int points) {
 		this.points = points;
 	}
@@ -64,8 +69,9 @@ public class Question {
 	public Quiz getQuizID() {
 		return quizID;
 	}
-	public void setQuizID(Quiz quizID) {
-		this.quizID = quizID;
+	
+	public void setQuizID(Quiz quiz) {
+		this.quizID = quiz;
 	}
 	
 	
