@@ -1,11 +1,6 @@
 package com.ssdi.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
-
-<<<<<<< HEAD:quizmania/src/main/java/com/ssdi/model/Admin.java
-=======
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Admin extends User{
