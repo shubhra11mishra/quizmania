@@ -1,4 +1,4 @@
-package com.ssdi.service;
+package com.ssdi.servicetest;
 
 import java.util.Optional;
 
@@ -10,6 +10,7 @@ import com.ssdi.dao.AdminPasscodeRepository;
 import com.ssdi.dao.AdminRepository;
 import com.ssdi.model.Admin;
 import com.ssdi.model.AdminPasscode;
+import com.ssdi.service.AdminService;
 
 import mockit.Expectations;
 import mockit.Injectable;
@@ -101,16 +102,18 @@ public class AdminServiceTest {
 	
 	@Test
 	public void createAdminServiceTest() {
-		Admin testAdmin = new Admin("TestUserFirstName", "TestUserLastName", "TestUserEmail", "TestUserPassword",
+		Admin testAdmin = new Admin("TestUserFirstName", "TestUserLastName", "TestAdminUserEmail", "TestUserPassword",
 				"123456");
 		
 		new Expectations() {
 			{
 				adminRepository.save(testAdmin);
+				adminRepository.deleteByEmail(testAdmin.getEmail());
 			}
 		};
 		
 		adminService.createAdmin(testAdmin);
+		adminService.deleteAdmin(testAdmin);
 	}
 	
 }

@@ -1,9 +1,10 @@
-package com.ssdi.dao;
+package com.ssdi.daotest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.ssdi.dao.AdminRepository;
 import com.ssdi.model.Admin;
 
 import mockit.integration.junit4.JMockit;

@@ -1,4 +1,4 @@
-package com.ssdi.controller;
+package com.ssdi.controllertest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -20,13 +20,19 @@ import org.springframework.web.context.WebApplicationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
 import com.ssdi.model.Admin;
+import com.ssdi.service.AdminService;
+
+import mockit.Injectable;
+import mockit.integration.junit4.JMockit;
 
 public class AdminControllerTest extends ContextLoaderTest{
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
+	@Injectable
 	private MockMvc mockMvc;
+	private AdminService adminService;
 
 	@Autowired
 	ObjectMapper objectMapper;
@@ -44,7 +50,7 @@ public class AdminControllerTest extends ContextLoaderTest{
 		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
 
-		this.mockMvc.perform(post("/quizmania/admin/register").contentType(MediaType.APPLICATION_JSON)
+	this.mockMvc.perform(post("/quizmania/admin/register").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
 		
 		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)

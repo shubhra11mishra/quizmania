@@ -1,4 +1,4 @@
-package com.ssdi.service;
+package com.ssdi.servicetest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.ssdi.dao.ExaminerRepository;
 import com.ssdi.model.Admin;
 import com.ssdi.model.Examiner;
+import com.ssdi.service.ExaminerService;
 
 import mockit.Expectations;
 import mockit.Injectable;
@@ -30,10 +31,12 @@ public class ExaminerServiceTest {
 		new Expectations() {
 			{
 				examinerRepository.save(examiner);
+				examinerRepository.deleteByEmail(examiner.getEmail());
 			}
 		};
 		
 		examinerService.createExaminer(examiner);
+		examinerService.delete(examiner);
 	}
 	
 	
