@@ -35,13 +35,13 @@ public class ExaminerControllerTest extends ContextLoaderTest{
 	public void testExaminerCreation() throws Exception {
 		Examiner examiner = new Examiner("TestUserFirstName", "TestUserLastName", "TestUserEmail", "TestUserPassword");
 		
-		/*this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());*/
+		this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());
 
 		this.mockMvc.perform(post("/quizmania/examiner/register").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());
 		
-		/*this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());*/
+		this.mockMvc.perform(delete("/quizmania/examiner/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(examiner))).andExpect(status().isOk());
 	}
 }

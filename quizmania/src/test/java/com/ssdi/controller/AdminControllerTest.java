@@ -41,13 +41,13 @@ public class AdminControllerTest extends ContextLoaderTest{
 		Admin admin = new Admin("TestUserAdminFirstName", "TestUserLastName", "TestUserAdminEmail", "TestUserPassword",
 				"123456");
 		
-		/*this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());*/
+		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
 
 		this.mockMvc.perform(post("/quizmania/admin/register").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
 		
-		/*this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());*/
+		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
 	}
 }
