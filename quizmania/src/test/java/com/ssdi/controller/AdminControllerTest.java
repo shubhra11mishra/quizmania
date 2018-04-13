@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
 import com.ssdi.model.Admin;
 
-
 public class AdminControllerTest extends ContextLoaderTest{
 
 	@Autowired
@@ -39,8 +38,8 @@ public class AdminControllerTest extends ContextLoaderTest{
 
 	@Test
 	public void testAdminCreation() throws Exception {
-		Admin admin = new Admin("TestUserFirstName", "TestUserLastName", "TestUserEmail", "TestUserPassword",
-				"TestUserPasscode");
+		Admin admin = new Admin("TestUserAdminFirstName", "TestUserLastName", "TestUserAdminEmail", "TestUserPassword",
+				"123456");
 		
 		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
