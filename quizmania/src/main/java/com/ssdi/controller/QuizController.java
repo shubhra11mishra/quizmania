@@ -42,12 +42,14 @@ public class QuizController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/quiz")
 	public void createQuiz(@RequestBody Quiz quiz) {		
-		 quizService.createQuiz(quiz);
+		System.out.println("Yay, in controller!! ");
+		System.out.println(quiz.toString());
+		quizService.createQuiz(quiz);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/viewQuiz")
-    public Collection<Quiz> getAllQuiz() {
+	@GetMapping("/viewQuizzes")
+    public Collection<Quiz> getAllQuizzes() {
         return quizRepository.findAll().stream().collect(Collectors.toList());
     }
 	
@@ -80,8 +82,5 @@ public class QuizController {
 //	    quizRepository.saveAndFlush(updatedQuiz);
 //	    return new ResponseEntity<>(updatedQuiz, HttpStatus.ACCEPTED);
 //	}
-	
-	
-	
+		
 }
-

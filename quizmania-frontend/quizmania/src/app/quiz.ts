@@ -1,7 +1,10 @@
-export interface IQuiz {
-    quizId: number;
-    title: string;
-    timeLimit: number;
-    category: string;
-    status: string;
-}
+export class Quiz{
+
+	constructor (
+    	public title: string,
+    	public timeLimit: number,
+    	public category: string,
+    	public status: string,
+    ) {} 
+    
+ }
