@@ -15,7 +15,7 @@ import { RegisterAdminService } from './registeradmin/registeradmin.service';
 import { LoginService } from './login/login.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { ExaminerDashboardComponent } from './createquiz/examiner-dashboard/examiner-dashboard.component';
+import { ExaminerDashboardComponent } from './examiner-dashboard/examiner-dashboard.component';
 import { CreateQuizComponent } from './createquiz/createquiz.component';
 import { PendingQuizComponent } from './pending-quiz/pending-quiz.component';
 import { ApprovedQuizComponent } from './approved-quiz/approved-quiz.component';
