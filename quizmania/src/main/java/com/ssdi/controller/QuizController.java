@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.dao.QuizRepository;
+import com.ssdi.dao.UserRepository;
+import com.ssdi.model.Examiner;
 import com.ssdi.model.Quiz;
+import com.ssdi.model.User;
 import com.ssdi.service.QuizService;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -30,7 +34,7 @@ import javax.validation.Valid;
 
 
 @RestController
-@RequestMapping("/quizmania/examiner")
+@RequestMapping("/quizmania")
 public class QuizController {
 
 	@Autowired
@@ -38,19 +42,51 @@ public class QuizController {
 	
 	@Autowired
 	QuizRepository quizRepository;
-	@Autowired ObjectMapper objectMapper;
+	@Autowired 
+	UserRepository userRepository;
+	@Autowired 
+	ObjectMapper objectMapper;
 	
-	@RequestMapping(method=RequestMethod.POST, value="/quiz")
-	public void createQuiz(@RequestBody Quiz quiz) {		
-		System.out.println("Yay, in controller!! ");
-		System.out.println(quiz.toString());
+	@RequestMapping(method=RequestMethod.POST, value="/examiner/{userid}/quiz")
+	public void createQuiz(@RequestBody Quiz quiz, @PathVariable(value = "userid") int userID) throws Exception {		
+		System.out.println("Yay, in quiz controller!! create quiz... ");
+		Optional<User> user = userRepository.findById(userID);
+		if ( user!= null )
+			quiz.setAuthor(user.get());
+		else 
+			throw new Exception("User is unauthorized to create quiz.");
 		quizService.createQuiz(quiz);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/viewQuizzes")
-    public Collection<Quiz> getAllQuizzes() {
-        return quizRepository.findAll().stream().collect(Collectors.toList());
+	@GetMapping("/{userid}/viewQuizzes")
+    public Collection<Quiz> getAllQuizzes(@PathVariable(value = "userid") int userID) throws Exception {
+		System.out.println("In the quiz controller..., getting quizzes!");
+		List<Quiz> quizzes = null;
+		User user = null;
+		try {
+			user = userRepository.findById(userID).get();
+		} catch(NoSuchElementException e) {
+			if (userID != 0) {
+				throw new Exception("User is unauthorized to create quizzes");
+			}
+		}
+		//if the user is admin, return all (pending quizzes) - need to be fixed! 
+		// ToDo !!! 
+		if (user.getUserType().equalsIgnoreCase("ADMIN")) {
+			quizzes = quizRepository.findByStatusOrderByCategoryAsc("pending");
+		} 
+		// else if the user is an examiner, return only his/her quizzes 
+		else if (user.getUserType().equalsIgnoreCase("Examiner")) {
+			quizzes = quizRepository.findByAuthorOrderByTitleAsc(user);
+		} 
+		// else (user is an examinee), return all the quizzes in the system 
+		else {
+			quizzes = quizRepository.findByStatusOrderByCategoryAsc("approved");
+		}
+        
+        System.out.println(quizzes.get(0).toString());
+        return quizzes;
     }
 	
 	@Transactional

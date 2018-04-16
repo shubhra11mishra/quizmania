@@ -31,14 +31,14 @@ const appRoutes: Routes = [
   { path:'registeradmin', component:RegisteradminComponent},
   { path:'registerexaminer', component:RegisterexaminerComponent},
   { path:'admin-dashboard', component:AdminDashboardComponent},
-  { path:'examiner-dashboard', component:ExaminerDashboardComponent},
+  { path:'examiner-dashboard/:userid', component:ExaminerDashboardComponent},
   { path:'pending-quiz', component:PendingQuizComponent},
   { path:'approved-quiz', component:ApprovedQuizComponent},
   { path:'view-question/:id', component:ViewQuestionComponent},
   { path:'quiz-status/:id', component:QuizStatusComponent},
   { path:'quiz-status-no/:id', component:QuizStatusNoComponent}, 
-  { path:'examiner/createquiz', component:CreateQuizComponent}, 
-  { path:'examiner/viewquizzes', component:ViewQuizzesComponent}, 
+  { path:'examiner/:userid/createquiz', component:CreateQuizComponent}, 
+  { path:'examiner/:userid/viewquizzes', component:ViewQuizzesComponent}, 
 ];
 
 @NgModule({
@@ -63,6 +63,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
   ],
   providers: [RegisterExaminerService, RegisterAdminService, LoginService],

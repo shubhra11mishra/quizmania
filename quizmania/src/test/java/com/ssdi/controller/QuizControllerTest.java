@@ -52,7 +52,7 @@ public class QuizControllerTest extends ContextLoaderTest{
 
 	       List<Quiz> allQuizzes = singletonList(quiz);
 
-	       given(controller.getAllQuiz()).willReturn(allQuizzes);
+	       given(controller.getAllQuizzes(0)).willReturn(allQuizzes);
 		
 		this.mockMvc.perform(get("http://localhost:8080/quizmania/examiner/viewQuiz").accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk())

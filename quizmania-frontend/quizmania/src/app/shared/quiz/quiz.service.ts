@@ -4,10 +4,11 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class QuizService {
-
+	private endURL = "";
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<any> {
-    return this.http.get('http://localhost:8080/quizmania/examiner/viewQuizzes');
+  getAll(userid): Observable<any> {
+  	this.endURL = 'http://localhost:8080/quizmania/' + userid + '/viewQuizzes';
+    return this.http.get(this.endURL);
   }
 }

@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
             if(response.json().userType==='ADMIN'){
               this.router.navigate(['/admin-dashboard']);
             }else if(response.json().userType==='EXAMINER'){
-              this.router.navigate(['/examiner-dashboard']);
+            	console.log(response.json());
+            	const url = "/examiner-dashboard/" + response.json().userID; 
+              	this.router.navigate([url]); 
             }
           }
         },

@@ -1,5 +1,7 @@
 package com.ssdi.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +22,9 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer>{
 	@Query("update Quiz u set u.status=?1 where u.quizID = ?2")
 	void setQuizStatus(String status, Integer quizid);
 	
-	
+	public List<Quiz> findByStatusOrderByCategoryAsc(String status);
+
+
+	public List<Quiz> findByAuthorOrderByTitleAsc(User user);
 	
 }

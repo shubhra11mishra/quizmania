@@ -18,12 +18,13 @@ export class PendingQuizComponent implements OnInit {
   constructor(private quizService: QuizService) { }
 
   ngOnInit() {
-    this.quizService.getAll().subscribe(
+  	// To-Do!!! Pass in admin user id 
+    this.quizService.getAll(0).subscribe(
       data => {
         console.log(data);
         this.quizzes = data;
         console.log(this.quizzes)
-      },
+      }, 
       error => console.log(error)
     )
   }
