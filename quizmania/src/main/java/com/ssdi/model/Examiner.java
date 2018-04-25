@@ -1,9 +1,6 @@
-package com.ssdi.user.examiner;
+package com.ssdi.model;
 
 import javax.persistence.Entity;
-
-import com.ssdi.user.User;
-import com.ssdi.user.UserType;
 
 @Entity
 public class Examiner extends User{

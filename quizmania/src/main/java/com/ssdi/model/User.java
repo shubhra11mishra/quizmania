@@ -1,4 +1,4 @@
-package com.ssdi.user;
+package com.ssdi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.ssdi.login;
+package com.ssdi.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -15,7 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
-import com.ssdi.user.examiner.Examiner;
+import com.ssdi.model.Examiner;
 
 public class LoginControllerTest extends ContextLoaderTest{
 

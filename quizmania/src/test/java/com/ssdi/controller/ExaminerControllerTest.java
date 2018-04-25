@@ -1,4 +1,4 @@
-package com.ssdi.user.examiner;
+package com.ssdi.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -14,6 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
+import com.ssdi.model.Examiner;
 
 public class ExaminerControllerTest extends ContextLoaderTest{
 
