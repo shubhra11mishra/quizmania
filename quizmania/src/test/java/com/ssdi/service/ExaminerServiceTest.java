@@ -30,10 +30,12 @@ public class ExaminerServiceTest {
 		new Expectations() {
 			{
 				examinerRepository.save(examiner);
+				examinerRepository.deleteByEmail(examiner.getEmail());
 			}
 		};
 		
 		examinerService.createExaminer(examiner);
+		examinerService.delete(examiner);
 	}
 	
 	

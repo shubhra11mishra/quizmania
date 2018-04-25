@@ -107,10 +107,13 @@ public class AdminServiceTest {
 		new Expectations() {
 			{
 				adminRepository.save(testAdmin);
+				adminRepository.deleteByEmail(testAdmin.getEmail());
 			}
 		};
 		
 		adminService.createAdmin(testAdmin);
+		adminService.deleteAdmin(testAdmin);
+		
 	}
 	
 }
