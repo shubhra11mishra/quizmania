@@ -57,7 +57,7 @@ public class QuestionServiceTest {
 			{
 				QuestionRepo.save(question); // result.equals(q);
 				QuestionRepo.save(question2); // result.equals(q);
-				QuestionRepo.findByQuizID(q);
+				//QuestionRepo.findByQuizID(q.getQuizID());
 			}
 		};
 

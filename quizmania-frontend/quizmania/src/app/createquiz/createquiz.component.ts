@@ -16,7 +16,7 @@ export class CreateQuizComponent {
 	
 	category = ['Psychology', 'Sociology', 'Philosophy', 'Arts & Culture', 'History', 'Geography', 'Biology', 'Physics', 'Chemistry', 'English', 'Linguistics', 'Engineering', 'Computer Science!', 'Math', 'Statistics'];
   
- 	model = new Quiz('Ancient History', 25, 'History', 'draft'); 
+ 	model = new Quiz('Sample Quiz', 25, 'Psychology', 'new'); 
  	
  	submitted = false; 
   	valid = false;
@@ -51,7 +51,7 @@ export class CreateQuizComponent {
   	newQuiz() {
   		this.submitted = false;
   		this.valid = false;
-  		this.model = new Quiz('', 15, '', 'draft');
+  		this.model = new Quiz('Sample Quiz', 15, 'Psychology', 'new');
   		//console.log("reset quiz...");
   	}
   
@@ -67,6 +67,11 @@ export class CreateQuizComponent {
   			console.log(this.userId);
   		
   		});
+  	}
+  	
+  	goBack() {
+  		this.endURL = '/examiner-dashboard/' + this.userId + '';
+    	this.router.navigate([this.endURL]);
   	}
 
 }

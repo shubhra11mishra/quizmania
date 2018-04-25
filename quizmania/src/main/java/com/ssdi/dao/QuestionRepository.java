@@ -19,6 +19,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>,Cru
 	public Question save(Question question);
 	
 	
-	public List<Question> findByQuizID(Quiz id);
+	public List<Question> findByQuizIDOrderByNumberAsc(Quiz id);
 	
 }

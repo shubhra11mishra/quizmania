@@ -4,13 +4,13 @@
 		<div class="navbar-header">
 			<a class="navbar-brand">Quizmania</a>
 		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a>You are logged-in as Examiner</a></li>
-				<button type="button" class="btn btn-default navbar-btn"
-					routerLink="/login">Logout</button>
+				<li>
+					<a>You are logged-in as Examiner</a>
+				</li>
+				<button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
 			</ul>
 		</div>
 	</div>
@@ -18,46 +18,40 @@
 
 <div class="container">
 	<h1>Create Quiz</h1>
-	<div class="alert alert-success" role="alert"
-		*ngIf="submitted && valid">Created Quiz!</div>
+	<div class="alert alert-success" role="alert" *ngIf="submitted && valid">Created Quiz!</div>
 
 	{{submitted}}, {{valid}}
 	<div *ngIf="!submitted">
 		<form (ngSubmit)="onSubmit()" #createQuizForm="ngForm">
 			<div class="form-group">
-				<label for="title">Title</label> <input type="text"
-					class="form-control" id="title" required [(ngModel)]="model.title"
-					name="title" #title="ngModel">
-				<div *ngIf="title.invalid && title.dirty" class="alert alert-danger">Specify
-					a title for the new quiz</div>
+				<label for="title">Title</label>
+				<input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="title" #title="ngModel">
+				<div *ngIf="title.invalid && title.dirty" class="alert alert-danger">Specify a title for the new quiz</div>
 			</div>
 
 			<div class="form-group">
-				<label for="timeLimit">Time Limit</label> <input type="number"
-					class="form-control" id="timeLimit" required
-					[(ngModel)]="model.timeLimit" name="timeLimit" #timeLimit="ngModel">
-				<div *ngIf="timeLimit.invalid && timeLimit.dirty"
-					class="alert alert-danger">Specify time limit for quiz</div>
+				<label for="timeLimit">Time Limit</label>
+				<input type="number" class="form-control" id="timeLimit" required [(ngModel)]="model.timeLimit" name="timeLimit"
+				 #timeLimit="ngModel">
+				<div *ngIf="timeLimit.invalid && timeLimit.dirty" class="alert alert-danger">Specify time limit for quiz</div>
 			</div>
 
 			<div class="form-group">
-				<label for="category">Subject</label> <select class="form-control"
-					id="category" required [(ngModel)]="model.category" name="category">
+				<label for="category">Subject</label>
+				<select class="form-control" id="category" required [(ngModel)]="model.category" name="category">
 					<option *ngFor="let cat of category" [value]="cat">{{cat}}</option>
 				</select>
 			</div>
 
 			<div class="form-group">
-				<label for="status">Status</label> <input type="text"
-					class="form-control" id="status" [(ngModel)]="model.status"
-					name="status" #status="ngModel" disabled>
+				<label for="status">Status</label>
+				<input type="text" class="form-control" id="status" [(ngModel)]="model.status" name="status" #status="ngModel"
+				 disabled>
 			</div>
 
-			<button type="submit" class="btn btn-success"
-				[disabled]="!createQuizForm.form.valid">Create Quiz!</button>
+			<button type="submit" class="btn btn-success" [disabled]="!createQuizForm.form.valid">Create Quiz!</button>
 
-			<button type="button" class="btn btn-default"
-				(click)="newQuiz();createQuizForm.reset()">Reset Form</button>
+			<button type="button" class="btn btn-default" (click)="newQuiz();createQuizForm.setValue(model)">Reset Form</button>
 
 		</form>
 	</div>
@@ -90,16 +84,19 @@
 		<br>
 		<!-- <button class="btn btn-primary" (click)="submitted=false; valid=false">Edit</button> -->
 		<p>
-			<font color="green">Please click the "View My Quizzes" button
-				to add questions to the quiz!</font>
+			<font color="green">Please click the "View My Quizzes" button to add questions to the quiz!</font>
 		</p>
 		<div>
-			<button type="button" class="btn btn-default navbar-btn"
-				routerLink="/examiner/{{userId}}/viewquizzes">View My
-				Quizzes</button>
+			<button type="button" class="btn btn-default navbar-btn" routerLink="/examiner/{{userId}}/viewquizzes">View My Quizzes
+			</button>
 		</div>
 
 	</div>
+	<p></p>
+	<div>
+		<button type="button" class="btn btn-default" (click)="goBack();">Back to Dashboard
+		</button>
 
+	</div>
 
 </div>
