@@ -8,6 +8,7 @@ import com.ssdi.model.Admin;
 
 import mockit.integration.junit4.JMockit;
 
+
 @RunWith(JMockit.class)
 @SpringBootTest 
 public class AdminRepositoryTest {

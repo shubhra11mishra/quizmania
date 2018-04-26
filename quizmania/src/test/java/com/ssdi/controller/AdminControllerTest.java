@@ -37,7 +37,6 @@ public class AdminControllerTest extends ContextLoaderTest{
 	public void testAdminCreation() throws Exception {
 		Admin admin = new Admin("TestUserAdminFirstName", "TestUserLastName", "TestUserAdminEmail", "TestUserPassword",
 				"123456");
-			
 		
 		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());

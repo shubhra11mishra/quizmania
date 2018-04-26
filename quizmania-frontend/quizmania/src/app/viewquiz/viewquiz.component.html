@@ -1,0 +1,63 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Quizmania</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a>You are logged-in as ADMIN</a>
+        </li>
+        <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th class="text-center">Question Number</th>
+          <th class="text-center">Question</th>
+          <th class="text-center">Correct Answer</th>
+          <th class="text-center">Points</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <div *ngFor="let b of quizzes">
+                            {{b.quizID}}
+                          </div> -->
+        <tr *ngFor="let post of questions">
+          <td class="text-center" style="width: 30px;">{{post.number}}</td>
+          <td class="text-center" style="width: 30px;">{{post.body}}</td>
+          <td class="text-center" style="width: 10px;">{{post.correctAnswer}}</td>
+          <td class="text-center" style="width: 10px;">{{post.points}}</td>
+          <!-- <td class="text-center" style="width: 15px;">{{post.category}}</td>
+                <td class="text-center" style="width: 200px;">{{post.status}}</td>
+                <td class="text-center" style="width: 200px;">{{post.timeLimit}}</td>
+                <td class="text-center" style="width: 200px;">{{post.title}}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <button type='button' class='btn btn-default' (click)='approve();'>Approve Quiz
+  </button>
+</div>
+
+<div>
+  <button type='button' class='btn btn-default' (click)='reject();'>Reject Quiz
+  </button>
+</div>
+
+<div>
+  <button type='button' class='btn btn-default' (click)='goBack();'>Back to My Dashboard
+  </button>
+</div>

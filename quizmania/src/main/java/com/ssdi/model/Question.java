@@ -22,6 +22,7 @@ public class Question {
 	private String body;
 	private String correctAnswer;
 	private int points;
+	private int number;
     @ManyToOne
 	private Quiz quizID;
 
@@ -66,6 +67,20 @@ public class Question {
 	}
 	public void setQuizID(Quiz quizID) {
 		this.quizID = quizID;
+	}
+
+	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
 	}
 	
 	

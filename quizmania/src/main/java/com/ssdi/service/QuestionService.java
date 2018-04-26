@@ -24,12 +24,7 @@ public class QuestionService {
 	}
 
 	public java.util.List<Question> findById(Quiz id) {
-		// TODO Auto-generated method stub
-		return questionRepository.findByQuizID(id);
+		return questionRepository.findByQuizIDOrderByNumberAsc(id);
 	}
-	
-	
-
-	
 
 }

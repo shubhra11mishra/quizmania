@@ -51,7 +51,6 @@ export class RegisteradminComponent implements OnInit {
     this.registerAdminService.registerAdmin(this.user)
       .subscribe(
         (response) => {
-          console.log(response);
           if(response.json().userID===null){
             this.invalidPasscode = true;
           }else{
