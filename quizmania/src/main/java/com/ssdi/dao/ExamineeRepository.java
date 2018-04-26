@@ -1,7 +1,6 @@
 package com.ssdi.dao;
 
 import org.springframework.data.repository.CrudRepository;
-
 import com.ssdi.model.Examinee;
 
 

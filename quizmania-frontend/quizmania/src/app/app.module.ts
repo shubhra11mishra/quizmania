@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import {HttpModule} from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
@@ -62,7 +62,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpModule,
+<<<<<<< HEAD
     HttpClientModule
+=======
+    ReactiveFormsModule
+>>>>>>> refs/heads/tempShubhra
   ],
   providers: [RegisterExaminerService, RegisterAdminService, LoginService],
   bootstrap: [AppComponent]

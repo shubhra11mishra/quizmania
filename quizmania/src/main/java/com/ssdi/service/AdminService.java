@@ -20,6 +20,7 @@ public class AdminService {
 	@Transactional
 	public void deleteAdmin(Admin admin) {
 		adminRepository.deleteByEmail(admin.getEmail());
+		
 	}
 
 }
