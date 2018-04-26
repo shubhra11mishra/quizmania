@@ -62,11 +62,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
+    HttpClientModule,
     ReactiveFormsModule
->>>>>>> refs/heads/tempShubhra
   ],
   providers: [RegisterExaminerService, RegisterAdminService, LoginService],
   bootstrap: [AppComponent]
