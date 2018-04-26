@@ -71,9 +71,8 @@ public class QuizController {
 			user = userRepository.findById(userID).get();
 			System.out.println("User: \n" + user.getEmail());
 		} catch (NoSuchElementException e) {
-			if (userID != 0) {
-				throw new Exception("User is unauthorized to create quizzes");
-			}
+				return  null;
+//				throw new Exception("User is unauthorized to create quizzes"); 
 		}
 
 		// if the user is admin, return all (pending quizzes) - need to be fixed!
@@ -110,18 +109,6 @@ public class QuizController {
 		quizRepository.setQuizStatus("Rejected", quizID);
 
 	}
-
-	// @RequestMapping(value = "/updateStatusYes/{id}", method = RequestMethod.POST
-	// )
-	// public @ResponseBody ResponseEntity<Quiz> update(@PathVariable int id,
-	// HttpServletRequest request) throws IOException
-	// {
-	// Quiz quiz = quizService.findById(id);
-	// Quiz updatedQuiz =
-	// objectMapper.readerForUpdating(quiz).readValue(request.getReader());
-	// quizRepository.saveAndFlush(updatedQuiz);
-	// return new ResponseEntity<>(updatedQuiz, HttpStatus.ACCEPTED);
-	// }
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{userid}/viewquiz/{id}")

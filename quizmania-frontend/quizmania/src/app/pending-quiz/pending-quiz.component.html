@@ -14,35 +14,44 @@
   </div>
 </nav>
 
-<div class='row'>
-  <table class='table'>
-    <thead class='thead-inverse'>
-      <tr>
-        <th class='text-center'>Quiz ID</th>
-        <th class='text-center'>Title</th>
-        <th class='text-center'>Time Limit</th>
-        <th class='text-center'>Category</th>
-        <th class='text-center'>Status</th>
-        <th class='text-center'>Review</th>
-      </tr>
-    </thead>
-    <tr *ngFor='let q of quizzes'>
-      <td class='text-center' style='width: 15px;'>{{q.quizID}}</td>
-      <td class='text-center' style='width: 200px;'>{{q.title}}</td>
-      <td class='text-center' style='width: 35px;'>{{q.timeLimit}} minutes</td>
-      <td class='text-center' style='width: 50px;'>{{q.category}}</td>
-      <td class='text-center' style='width: 100px;'>{{q.status}}</td>
-      <td class='text-center' style='width: 150px;'>
-        <button type='button' class='btn btn-default' (click)='reviewQuiz(q.quizID);'>Review
-        </button>
-      </td>
-    </tr>
-  </table>
+<div *ngIf="message!==null; else authorizedUser">
+  <p class="text-center error-text" >{{message}}</p>
 </div>
+<ng-template #authorizedUser>
+  <div *ngIf="(quizzes | async)?.length==0; else elseBlock">No pending quizzes!</div>
 
-<br>
+  <ng-template #elseBlock>
+    <div class='row'>
+      <table class='table'>
+        <thead class='thead-inverse'>
+          <tr>
+            <th class='text-center'>Quiz ID</th>
+            <th class='text-center'>Title</th>
+            <th class='text-center'>Time Limit</th>
+            <th class='text-center'>Category</th>
+            <th class='text-center'>Status</th>
+            <th class='text-center'>Review</th>
+          </tr>
+        </thead>
+        <tr *ngFor='let q of quizzes'>
+          <td class='text-center' style='width: 15px;'>{{q.quizID}}</td>
+          <td class='text-center' style='width: 200px;'>{{q.title}}</td>
+          <td class='text-center' style='width: 35px;'>{{q.timeLimit}} minutes</td>
+          <td class='text-center' style='width: 50px;'>{{q.category}}</td>
+          <td class='text-center' style='width: 100px;'>{{q.status}}</td>
+          <td class='text-center' style='width: 150px;'>
+            <button type='button' class='btn btn-default' (click)='reviewQuiz(q.quizID);'>Review
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </ng-template>
+  <br>
 
-<div>
-  <button type='button' class='btn btn-default' (click)='goBack();'>Back to My Dashboard
-  </button>
-</div>
+  <div>
+    <button type='button' class='btn btn-default' (click)='goBack();'>Back to My Dashboard
+    </button>
+  </div>
+
+</ng-template>
