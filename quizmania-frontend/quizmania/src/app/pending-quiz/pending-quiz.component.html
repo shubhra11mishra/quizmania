@@ -15,10 +15,11 @@
 </nav>
 
 <div *ngIf="message!==null; else authorizedUser">
+  <p>should not be here :(</p>
   <p class="text-center error-text" >{{message}}</p>
 </div>
 <ng-template #authorizedUser>
-  <div *ngIf="(quizzes | async)?.length==0; else elseBlock">No pending quizzes!</div>
+  <div *ngIf="quizzes?.length==0; else elseBlock">No pending quizzes!</div>
 
   <ng-template #elseBlock>
     <div class='row'>

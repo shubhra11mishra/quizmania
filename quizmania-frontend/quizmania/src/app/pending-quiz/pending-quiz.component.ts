@@ -28,6 +28,7 @@ export class PendingQuizComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.message = null;
     // To-Do!!! Pass in admin user id
     this.route.params.subscribe((params: Params) => {
       this.userId = params["userid"];
