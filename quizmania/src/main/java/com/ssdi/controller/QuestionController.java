@@ -39,31 +39,26 @@ public class QuestionController {
 		 questionService.createQuestion(question);
 	}
 	
+	/**
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/viewQuestion")
     public Collection<Question> getAllQuestion() {
         return questionRepository.findAll().stream().collect(Collectors.toList());
     }
 	
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	@GetMapping("/viewQuestion/{id}")
-//	@EntityGraph(value = "Question.quizID", type = EntityGraphType.FETCH)
-//	public Optional<Question> getQuestionById(@PathVariable(value = "id") int s) {
-//	    return questionRepository.findById(s);
-	            //}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/viewQuestion/{id}")
+	@EntityGraph(value = "Question.quizID", type = EntityGraphType.FETCH)
+	public Optional<Question> getQuestionById(@PathVariable(value = "id") int s) {
+	    return questionRepository.findById(s);
+	            }
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/viewQuestion/{id}")
-	public List<Question> getQuestionById1(@PathVariable(value = "id") Quiz id) {
+	public List<Question> getQuizQuestionsById(@PathVariable(value = "id") Quiz id) {
 	    return questionService.findById(id);
 	            
 	}
-	
-	
-	
-	
-	
-	
-	
+	*/
 }
 

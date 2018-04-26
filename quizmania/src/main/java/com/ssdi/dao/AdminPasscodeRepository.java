@@ -7,3 +7,4 @@ import com.ssdi.model.AdminPasscode;
 public interface AdminPasscodeRepository extends CrudRepository<AdminPasscode, String>{
 
 }
+

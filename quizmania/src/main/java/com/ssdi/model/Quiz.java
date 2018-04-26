@@ -2,6 +2,7 @@ package com.ssdi.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Quiz {
@@ -26,17 +27,20 @@ public class Quiz {
     private String status;
     @OneToMany (fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Collection<Question> questions;
-	
+	@ManyToOne 
+	private User author;
+    
     public Quiz() {
 		super();
 		questions = new ArrayList<Question>();
 	}
     
-	public Quiz(String title, int timeLimit, String status) {
+	public Quiz(String title, int timeLimit, String category, String status) {
 		super();
 		this.title = title;
 		this.timeLimit = timeLimit;
 		this.status=status;
+		this.category = category;
 		
 	}
 	
@@ -86,6 +90,34 @@ public class Quiz {
 		this.category = category;
 	}
 	
+	/**
+	 * @return the questions
+	 */
+	public Collection<Question> getQuestions() {
+		return questions;
+	}
+
+	/**
+	 * @param questions the questions to set
+	 */
+	public void setQuestions(Collection<Question> questions) {
+		this.questions = questions;
+	}
+
+	/**
+	 * @return the author
+	 */
+	public User getAuthor() {
+		return author;
+	}
+
+	/**
+	 * @param user the author to set
+	 */
+	public void setAuthor(User user) {
+		this.author = user;
+	}
+	
 	//public void addQuestion(Question q) {
 		//questions.add(q);
 	//}
@@ -94,5 +126,25 @@ public class Quiz {
 		//return questions;
 	//}
 	
+	@Override 
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		} 
+		if (!(o instanceof Quiz)) {
+			return false; 
+		}
+		
+		Quiz q = (Quiz) o;
+		if (q.getTitle().equals(title) && q.getTimeLimit() == timeLimit && q.getStatus().equals(status) && q.getCategory().equals(category)) {
+			return true;
+		} else { 
+			return false;
+		}
+		
+	}
 	
+	public String toString() {
+		return title + " (" + category + ")";
+	}
 }

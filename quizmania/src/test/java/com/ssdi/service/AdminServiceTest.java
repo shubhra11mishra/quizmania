@@ -4,13 +4,13 @@ import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ssdi.dao.AdminPasscodeRepository;
 import com.ssdi.dao.AdminRepository;
 import com.ssdi.model.Admin;
 import com.ssdi.model.AdminPasscode;
 
+import mockit.*;
 import mockit.Expectations;
 import mockit.Injectable;
 import mockit.Tested;
@@ -107,13 +107,10 @@ public class AdminServiceTest {
 		new Expectations() {
 			{
 				adminRepository.save(testAdmin);
-				adminRepository.deleteByEmail(testAdmin.getEmail());
 			}
 		};
 		
 		adminService.createAdmin(testAdmin);
-		adminService.deleteAdmin(testAdmin);
-		
 	}
 	
 }

@@ -70,7 +70,7 @@ public class QuestionControllerTest extends ContextLoaderTest{
 
 	       List<Question> allQuestions = singletonList(question);
 
-	       given(controller.getAllQuestion()).willReturn(allQuestions);
+	       //given(controller.getAllQuestion()).willReturn(allQuestions);
 		
 		this.mockMvc.perform(get("http://localhost:8080/quizmania/examiner/viewQuestion").accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk())
@@ -95,7 +95,7 @@ public class QuestionControllerTest extends ContextLoaderTest{
 	    questions.add(question);
 
 	       
-	    given(controller.getQuestionById1(quiz)).willReturn(questions);
+	    //given(controller.getQuizQuestionsById(quiz.getQuizID())).willReturn(questions);
 		
 		this.mockMvc.perform(get("http://localhost:8080/quizmania/examiner/viewQuestion/"+quiz.getQuizID()).accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk());

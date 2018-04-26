@@ -52,6 +52,11 @@
 			<version>1.8</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -63,6 +68,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
