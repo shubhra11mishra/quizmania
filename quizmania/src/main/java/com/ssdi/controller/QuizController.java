@@ -119,5 +119,14 @@ public class QuizController {
 		List<Question> questions = questionRepository.findByQuizIDOrderByNumberAsc(quizID);
 		return questions;
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/{quizID}")
+	public Quiz getQuiz(@PathVariable(value = "quizID") int quizID) {
+		System.out
+				.println("In the quiz controller..., getting quiz " + quizID);
+		Quiz quiz = quizService.findById(quizID);
+		return quiz;
+	}
 
 }

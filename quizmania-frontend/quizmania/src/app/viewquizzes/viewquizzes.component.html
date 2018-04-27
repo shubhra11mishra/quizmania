@@ -39,8 +39,8 @@
           <td class="text-center" style="width: 100px;">{{q.status}}</td>
           <td class="text-center" style="width: 150px;">
             <div *ngIf="q.status=='new' || q.status=='draft'">
-              <button type="button" class="btn btn-default" (click)="addQuestions(q.quizID);">Add Questions
-              </button>
+            <button type="button" class="btn btn-default navbar-btn"
+		routerLink="/quizmania/{{userId}}/editquiz/{{q.quizID}}/addquestions">Add Questions</button>
             </div>
             <div *ngIf="q.status=='approved'">
               <button type="button" class="btn btn-default" (click)="publish(q.quizID);">Share & Publish!

@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   templateUrl: './createquiz.component.html',
   styleUrls: ['./createquiz.component.css']
 })
-export class CreateQuizComponent {
+export class CreateQuizComponent implements OnInit {
   userId = '';
   endURL = 'http://localhost:4200/quizmania/examiner/' +
     this.userId +

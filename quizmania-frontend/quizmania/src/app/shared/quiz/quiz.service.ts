@@ -17,11 +17,15 @@ export class QuizService {
     return this.http.get(this.endURL);
   }
 
-  // resturns quesion for given quiz
+  // returns quesion for given quiz
   getAllQuestions(userid, quizid): Observable<any> {
     console.log("in quiz service ts, getting questions for quiz " + quizid);
     this.endURL =
       "http://localhost:8080/quizmania/" + userid + "/viewquiz/" + quizid;
     return this.http.get(this.endURL);
+  }
+
+  updateQuiz(quizid, questions) {
+    console.log("to do :)");
   }
 }

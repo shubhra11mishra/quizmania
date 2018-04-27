@@ -1,15 +1,26 @@
 .displayResponse {
-    width: 12em;
-    padding: 1.1em;
+  width: 12em;
+  padding: 1.1em;
 }
 
 .question {
-    font-weight: bold;
-    color: blue;
+  font-weight: bold;
+  color: blue;
 }
 
 .choice {
-    font-weight: bold;
-    color: green;
+  font-weight: bold;
+  color: green;
 }
 
+.title {
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: beige;
+}
+
+.subtitle {
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+}

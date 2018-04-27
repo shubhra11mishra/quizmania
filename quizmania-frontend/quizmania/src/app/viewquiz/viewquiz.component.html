@@ -17,13 +17,17 @@
 </nav>
 
 <div class="container">
+  <div class="title">{{quiz.title}}</div><hr>
+  <div class="subtitle">Subject: {{quiz.category}}</div>
+  <div class="subtitle">Time Limit: {{quiz.time_limit}}</div>
+  <hr><br>
   <div *ngFor="let post of questions">
 
     <p class="question">{{post.number}}. {{post.body}} </p>
     <!-- for testing... 
     <p>type: {{post.type}}</p>
     -->
-    <div *ngIf="post.type == 1">
+    <div *ngIf="post.type == 1"> <!-- multiple-choice question w/ four choices-->
       <div *ngIf="post.correctAnswer==='a'; else elseA">
         <input class="newLine" type="radio" value="a" name="{{post.number}}" checked="checked" disabled>
         <label class="choice" for="a">{{post.choiceA}}</label>
@@ -62,10 +66,10 @@
         <label class="choice" for="d">{{post.choiceD}}</label>
       </ng-template>
       <div *ngIf="post.correctAnswer==='a' || post.correctAnswer==='b' || post.correctAnswer==='c'"></div>
-      
+
       <br>
     </div>
-    <div *ngIf="post.type == 2">
+    <div *ngIf="post.type == 2"> <!-- essay question --> 
       <div class="row">
         <div class="col-xs-3 choice">
           Correct Answer

@@ -14,6 +14,7 @@ export class ViewQuizComponent implements OnInit {
   userId;
   quizId;
   endURL = '';
+  quiz;
 
   // quizzes: Array<any>;
   questions;
