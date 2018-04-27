@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssdi.model.Admin;
 import com.ssdi.model.Examinee;
 import com.ssdi.model.User;
 import com.ssdi.service.ExamineeService;
@@ -18,13 +19,6 @@ public class ExamineeController {
 	@Autowired
 	ExamineeService examineeService;
 	
-	@RequestMapping(method=RequestMethod.POST, value="/login")
-	public Examinee login(@RequestBody User user) {	
-		System.out.println("Inside server Login");
-		return null;
-		//return examineeService.getExamineeByEmail(examinee);
-	}
-	
 	@RequestMapping(method=RequestMethod.POST, value="/register")
 	public Examinee register(@RequestBody Examinee examinee) {
 		return examineeService.createExaminee(examinee);
@@ -33,6 +27,11 @@ public class ExamineeController {
 	@RequestMapping(method=RequestMethod.POST, value="/{userId}/takequiz")
 	public void takeQuiz(@RequestBody int quizId, @PathVariable int userId) {
 		examineeService.takeQuiz(userId, quizId);
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/delete")
+	public void delete(@RequestBody Examinee examinee) {
+		examineeService.deleteExaminee(examinee);
 	}
 
 }

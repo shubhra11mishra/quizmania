@@ -20,7 +20,7 @@ public class Examinee extends User {
 		super(email, password);
 	}
 	
-	public Examinee(String userFirstName, String userLastName, String email, String password, String userType) {
+	public Examinee(String userFirstName, String userLastName, String email, String password) {
 		super(userFirstName, userLastName, email, password, String.valueOf(UserType.EXAMINEE));
 	}
 

@@ -18,7 +18,7 @@ import mockit.Injectable;
 import mockit.Tested;
 
 public class QuestionServiceTest {
-
+/*
 	@Injectable
 	private QuestionRepository QuestionRepo;
 
@@ -66,5 +66,5 @@ public class QuestionServiceTest {
 		List<Question> actual = QuestionService.findById(q);
 
 	}
-
+*/
 }

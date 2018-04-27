@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdi.model.Admin;
+import com.ssdi.model.Examiner;
 import com.ssdi.service.AdminService;
 
 @RestController
@@ -21,5 +22,9 @@ public class AdminController {
 		return adminService.createAdmin(admin);
 	}
 	
-
+	@RequestMapping(method=RequestMethod.DELETE, value="/delete")
+	public void delete(@RequestBody Admin admin) {
+		adminService.deleteAdmin(admin);
+	}
+	
 }

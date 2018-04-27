@@ -41,7 +41,7 @@ import com.ssdi.service.QuestionService;
 
 public class QuestionControllerTest extends ContextLoaderTest{
 
-	@Autowired
+/*	@Autowired
 	private WebApplicationContext webApplicationContext;
 
 	private MockMvc mockMvc;
@@ -100,5 +100,5 @@ public class QuestionControllerTest extends ContextLoaderTest{
 		this.mockMvc.perform(get("http://localhost:8080/quizmania/examiner/viewQuestion/"+quiz.getQuizID()).accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
         .andExpect(status().isOk());
 	}
-	
+	*/
 }

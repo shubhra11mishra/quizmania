@@ -5,5 +5,5 @@ import com.ssdi.model.Examinee;
 
 
 public interface ExamineeRepository extends CrudRepository<Examinee, Integer>{
-	public Examinee findByEmail(String email);
+	public void deleteByEmail(String email);
 }

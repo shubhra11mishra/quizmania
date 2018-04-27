@@ -48,5 +48,6 @@ public class AdminControllerTest extends ContextLoaderTest{
 		
 		this.mockMvc.perform(delete("/quizmania/admin/delete").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(admin))).andExpect(status().isOk());
+	
 	}
 }

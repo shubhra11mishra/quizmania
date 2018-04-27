@@ -2,9 +2,11 @@ package com.ssdi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ssdi.dao.ExamineeRepository;
 import com.ssdi.dao.QuizRepository;
+import com.ssdi.model.Admin;
 import com.ssdi.model.Examinee;
 import com.ssdi.model.Quiz;
 
@@ -15,10 +17,7 @@ public class ExamineeService {
 	ExamineeRepository examineeRepository;
 	@Autowired
 	QuizRepository quizRepository;
-	
-	public Examinee getExamineeByEmail(Examinee examinee) {
-		return examineeRepository.findByEmail(examinee.getEmail());
-	}
+
 
 	public Examinee createExaminee(Examinee examinee) {
 		return examineeRepository.save(examinee);
@@ -31,5 +30,11 @@ public class ExamineeService {
 		quiz.getExamineeList().add(examinee);
 		examineeRepository.save(examinee);
 		quizRepository.save(quiz);*/
+	}
+	
+	@Transactional
+	public void deleteExaminee(Examinee examinee) {
+		examineeRepository.deleteByEmail(examinee.getEmail());
+		
 	}
 }
