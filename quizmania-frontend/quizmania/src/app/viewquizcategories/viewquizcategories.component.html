@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Categories</th>
+          
+
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <div *ngFor="let b of quizzes">
+                            {{b.quizID}}
+                          </div> -->
+        <tr *ngFor="let post of categories">
+          
+          <button type='button' class='btn btn-default' (click)='viewQuiz(post);'>{{post}}</button>
+         </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -15,7 +15,7 @@ export class QuizStatusNoComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/quizmania/examiner/updateStatusNo/'+ this.route.params['_value']['id'] ).subscribe(data => {
+    this.http.get('http://localhost:8080/quizmania/updateStatusNo/'+ this.route.params['_value']['id'] ).subscribe(data => {
       
       
     });

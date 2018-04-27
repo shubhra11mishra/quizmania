@@ -95,6 +95,7 @@ public class QuizController {
 		return quizzes;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusYes/{id}")
 	public void updateQuiz(@PathVariable(value = "id") Integer quizID) {
@@ -103,6 +104,7 @@ public class QuizController {
 
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusNo/{id}")
 	public void updateQuiz1(@PathVariable(value = "id") Integer quizID) {
@@ -132,5 +134,13 @@ public class QuizController {
 		List<Question> questions = questionRepository.findByQuizIDOrderByNumberAsc(quizID);
 		return questions;
 	}
+	
+	@Transactional
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(method=RequestMethod.GET, value="/quizByCategory/{id}")
+	public Collection<Quiz> getQuizByCategory(@PathVariable(value = "id") String id) {
+
+	    return quizRepository.findCategory(id);
+	    }
 
 }

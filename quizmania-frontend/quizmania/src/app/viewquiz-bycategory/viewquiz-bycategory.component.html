@@ -1,0 +1,23 @@
+<div class='row'>
+  <table class='table'>
+    <thead class='thead-inverse'>
+      <tr>
+        <th class='text-center'>Quiz ID</th>
+        <th class='text-center'>Title</th>
+        <th class='text-center'>Time Limit</th>
+        <th class='text-center'>Category</th>
+        <th class='text-center'>Open</th>
+      </tr>
+    </thead>
+    <tr *ngFor='let q of quizzess'>
+      <td class='text-center' style='width: 15px;'>{{q.quizID}}</td>
+      <td class='text-center' style='width: 200px;'>{{q.title}}</td>
+      <td class='text-center' style='width: 35px;'>{{q.timeLimit}} minutes</td>
+      <td class='text-center' style='width: 50px;'>{{q.category}}</td>
+      <td class='text-center' style='width: 150px;'>
+        <button type='button' class='btn btn-default' (click)='reviewQuiz(q.quizID);'>Open
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

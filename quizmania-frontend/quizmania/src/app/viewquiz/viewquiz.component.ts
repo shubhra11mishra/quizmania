@@ -45,10 +45,14 @@ export class ViewQuizComponent implements OnInit {
   }
 
   approve() {
+    this.endURL = '/quiz-status/' + this.quizId + '';
+    this.router.navigate([this.endURL]);
     console.log('approve...quiz ' + this.quizId + ' for user ' + this.userId);
   }
 
   reject() {
+    this.endURL = '/quiz-status-no/' + this.quizId + '';
+    this.router.navigate([this.endURL]);
     console.log('reject...quiz ' + this.quizId + ' for user ' + this.userId);
   }
 }

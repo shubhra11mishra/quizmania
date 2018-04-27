@@ -19,4 +19,15 @@ export class QuizService {
     return this.http.get(this.endURL);
   }
 
+  getQuizCategories(): Observable<any> {
+    console.log('getting quizcategories');
+    this.endURL = 'http://localhost:8080/quizmania/examinee/quizCategories/';
+    return this.http.get(this.endURL);
+  }
+  getQuizByCategory(quizId): Observable<any> {
+    console.log('getting quizzess');
+    this.endURL = 'http://localhost:8080/quizmania/quizByCategory/'+quizId;
+    return this.http.get(this.endURL);
+  }
+
 }

@@ -24,6 +24,8 @@ import { ViewQuizComponent } from './viewquiz/viewquiz.component';
 import { QuizStatusComponent } from './quiz-status/quiz-status.component';
 import { QuizStatusNoComponent } from './quiz-status-no/quiz-status-no.component';
 import { ViewQuizzesComponent } from './viewquizzes/viewquizzes.component';
+import { ViewquizcategoriesComponent } from './viewquizcategories/viewquizcategories.component';
+import { ViewquizBycategoryComponent } from './viewquiz-bycategory/viewquiz-bycategory.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -38,7 +40,9 @@ const appRoutes: Routes = [
   { path: 'quiz-status/:id', component: QuizStatusComponent },
   { path: 'quiz-status-no/:id', component: QuizStatusNoComponent },
   { path: 'examiner/:userid/createquiz', component: CreateQuizComponent },
-  { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent }
+  { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent },
+  { path: 'viewcategories', component: ViewquizcategoriesComponent },
+  { path: 'quizByCategory/:id', component: ViewquizBycategoryComponent }
 ];
 
 @NgModule({
@@ -56,7 +60,9 @@ const appRoutes: Routes = [
     ViewQuizComponent,
     QuizStatusComponent,
     QuizStatusNoComponent,
-    ViewQuizzesComponent
+    ViewQuizzesComponent,
+    ViewquizcategoriesComponent,
+    ViewquizBycategoryComponent
   ],
   imports: [
     BrowserModule,
