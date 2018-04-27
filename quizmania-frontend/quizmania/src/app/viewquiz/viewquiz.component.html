@@ -17,45 +17,76 @@
 </nav>
 
 <div class="container">
-  <div class="row">
-    <table class="table">
-      <thead class="thead-inverse">
-        <tr>
-          <th class="text-center">Question Number</th>
-          <th class="text-center">Question</th>
-          <th class="text-center">Correct Answer</th>
-          <th class="text-center">Points</th>
+  <div *ngFor="let post of questions">
 
-        </tr>
-      </thead>
-      <tbody>
-        <!-- <div *ngFor="let b of quizzes">
-                            {{b.quizID}}
-                          </div> -->
-        <tr *ngFor="let post of questions">
-          <td class="text-center" style="width: 30px;">{{post.number}}</td>
-          <td class="text-center" style="width: 30px;">{{post.body}}</td>
-          <td class="text-center" style="width: 10px;">{{post.correctAnswer}}</td>
-          <td class="text-center" style="width: 10px;">{{post.points}}</td>
-          <!-- <td class="text-center" style="width: 15px;">{{post.category}}</td>
-                <td class="text-center" style="width: 200px;">{{post.status}}</td>
-                <td class="text-center" style="width: 200px;">{{post.timeLimit}}</td>
-                <td class="text-center" style="width: 200px;">{{post.title}}</td> -->
-        </tr>
-      </tbody>
-    </table>
+    <p class="question">{{post.number}}. {{post.body}} </p>
+    <!-- for testing... 
+    <p>type: {{post.type}}</p>
+    -->
+    <div *ngIf="post.type == 1">
+      <div *ngIf="post.correctAnswer==='a'; else elseA">
+        <input class="newLine" type="radio" value="a" name="{{post.number}}" checked="checked" disabled>
+        <label class="choice" for="a">{{post.choiceA}}</label>
+      </div>
+      <ng-template #elseA>
+        <input class="newLine" type="radio" value="a" name="{{post.number}}" disabled>
+        <label class="choice" for="a">{{post.choiceA}}</label>
+      </ng-template>
+
+      <div *ngIf="post.correctAnswer==='b'; else elseB">
+        <input class="newLine" type="radio" value="b" name="{{post.number}}" checked="checked" disabled>
+        <label class="choice" for="b">{{post.choiceB}}</label>
+      </div>
+      <ng-template #elseB>
+        <input class="newLine" type="radio" value="b" name="{{post.number}}" disabled>
+        <label class="choice" for="b">{{post.choiceB}}</label>
+      </ng-template>
+      <div *ngIf="post.correctAnswer==='a'"></div>
+
+      <div *ngIf="post.correctAnswer==='c'; else elseC">
+        <input class="newLine" type="radio" value="c" name="{{post.number}}" checked="checked" disabled>
+        <label class="choice" for="c">{{post.choiceC}}</label>
+      </div>
+      <ng-template #elseC>
+        <input class="newLine" type="radio" value="c" name="{{post.number}}" disabled>
+        <label class="choice" for="c">{{post.choiceC}}</label>
+      </ng-template>
+      <div *ngIf="post.correctAnswer==='a' || post.correctAnswer==='b'"></div>
+
+      <div *ngIf="post.correctAnswer==='d'; else elseD">
+        <input class="newLine" type="radio" value="d" name="{{post.number}}" checked="checked" disabled>
+        <label class="choice" for="d">{{post.choiceD}}</label>
+      </div>
+      <ng-template #elseD>
+        <input class="newLine" type="radio" value="d" name="{{post.number}}" disabled>
+        <label class="choice" for="d">{{post.choiceD}}</label>
+      </ng-template>
+      <div *ngIf="post.correctAnswer==='a' || post.correctAnswer==='b' || post.correctAnswer==='c'"></div>
+      
+      <br>
+    </div>
+    <div *ngIf="post.type == 2">
+      <div class="row">
+        <div class="col-xs-3 choice">
+          Correct Answer
+          <input type="text" class="form-control displayResponse" id="answer" value="{{post.correctAnswer}}" name="answer" disabled>
+        </div>
+      </div>
+    </div>
+    <br>
+
   </div>
 </div>
 
 <div>
-  <button type='button' class='btn btn-default' (click)='approve();'>Approve Quiz
+  <button type='button' class="btn btn-success" (click)='approve();'>Approve Quiz
+  </button>
+
+  <button type='button' class='btn btn-danger' (click)='reject();'>Reject Quiz
   </button>
 </div>
 
-<div>
-  <button type='button' class='btn btn-default' (click)='reject();'>Reject Quiz
-  </button>
-</div>
+<br>
 
 <div>
   <button type='button' class='btn btn-default' (click)='goBack();'>Back to My Dashboard

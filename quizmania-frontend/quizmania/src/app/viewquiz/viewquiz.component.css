@@ -1,0 +1,15 @@
+.displayResponse {
+    width: 12em;
+    padding: 1.1em;
+}
+
+.question {
+    font-weight: bold;
+    color: blue;
+}
+
+.choice {
+    font-weight: bold;
+    color: green;
+}
+

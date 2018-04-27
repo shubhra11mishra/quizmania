@@ -20,7 +20,6 @@
 	<h1>Create Quiz</h1>
 	<div class="alert alert-success" role="alert" *ngIf="submitted && valid">Created Quiz!</div>
 
-	{{submitted}}, {{valid}}
 	<div *ngIf="!submitted">
 		<form (ngSubmit)="onSubmit()" #createQuizForm="ngForm">
 			<div class="form-group">
@@ -87,7 +86,7 @@
 			<font color="green">Please click the "View My Quizzes" button to add questions to the quiz!</font>
 		</p>
 		<div>
-			<button type="button" class="btn btn-default navbar-btn" routerLink="/examiner/{{userId}}/viewquizzes">View My Quizzes
+			<button type="button" class="btn btn-default navbar-btn" routerLink="/examiner/{{userId}}/viewmyquizzes">View My Quizzes
 			</button>
 		</div>
 
