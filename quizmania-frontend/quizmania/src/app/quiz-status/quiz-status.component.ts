@@ -18,9 +18,12 @@ export class QuizStatusComponent implements OnInit {
 
   ngOnInit() {
     
-    this.http.get('http://localhost:8080/quizmania/examiner/updateStatusYes/'+ this.route.params['_value']['id'] ).subscribe(data => {
+    this.http.get('http://localhost:8080/quizmania/updateStatusYes/'+ this.route.params['_value']['id'] ).subscribe(data => {
       
       
     });
   }
+
+  
+  
   }

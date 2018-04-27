@@ -3,7 +3,13 @@ import { QuizService } from "../shared";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Http, Response, RequestOptions, Headers } from "@angular/http";
-import { FormControlName, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormControlName,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 import { Quiz, Question } from "../quiz";
 import { sample } from "rxjs/operators";
 
@@ -19,11 +25,12 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
   userId;
   quizId;
   oldQuestions;
-  // questions;
+  fullQuestions;
   questionForm: FormGroup;
   q1;
   currentQuestions;
   mcQ = [];
+  endURL;
 
   constructor(
     private fb: FormBuilder,
@@ -106,6 +113,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
     // this.questionForm.reset({
     // question: this.q1
     // this.setQuestions(sample_questions);
+    this.createForm();
   }
   // this.questions = [];
 
@@ -123,17 +131,72 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
     //   null
     // );
     // this.questions.push(this.fb.group(this.q1));
-    this.questions.push(this.fb.group(this.question.makeNewQuestion('', '', '', '', '', '', null, null, 1)));
+    this.questions.push(
+      this.fb.group(
+        this.question.makeNewQuestion("", "", "", "", "", "", null, null, 1)
+      )
+    );
   }
 
   addEssayQuestion() {
     this.mcQ.push(false);
     // this.q1 = this.question.makeNewSimpleQuestion('sample essay question...', 'correct!', 2, 15, 2);
-    this.questions.push(this.fb.group(this.question.makeNewSimpleQuestion('', '', null, null, 2)));
+    this.questions.push(
+      this.fb.group(this.question.makeNewSimpleQuestion("", "", null, null, 2))
+    );
   }
 
   removeQuestion(index) {
     this.questions.removeAt(index);
     this.mcQ.splice(index, 1);
+  }
+
+  prepareSaveQuestions() {
+    const formValues = this.questionForm.value;
+
+    const questionsDeepCopy: Question[] = formValues.questions.map(
+      (question: Question) => Object.assign({}, question)
+    );
+
+    return questionsDeepCopy;
+  }
+
+  onSubmit() {
+    this.fullQuestions = this.prepareSaveQuestions();
+    this.resetForm();
+    // this.quizService
+    //   .updateQuiz(this.userId, this.quizId, this.fullQuestions)
+    //   .subscribe(
+    //     // console.log('called update quiz in quiz service ts')
+    //   );
+
+    console.log('hmm...adding questions');
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    const options = new RequestOptions({
+      headers: headers
+    });
+
+    this.endURL =
+      'http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' + this.quizId + '/addQuestions';
+    return this.http
+      .post(this.endURL, this.fullQuestions, options)
+      .toPromise()
+      .then((good: Response) => {
+        console.log('added questions to quiz!');
+        return good.json;
+      })
+      .catch((error: Response | any) => {
+        console.log('error adding questions :(');
+        console.log(error);
+        return Promise.reject(error);
+      });
+
+  }
+
+  revert() {
+    this.resetForm();
   }
 }

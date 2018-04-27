@@ -25,6 +25,7 @@ import com.ssdi.model.User;
 import com.ssdi.service.QuizService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -60,6 +61,22 @@ public class QuizController {
 			throw new Exception("User is unauthorized to create quiz.");
 		quizService.createQuiz(quiz);
 	}
+	
+	// http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' + this.quizId + '/addQuestions
+	@RequestMapping(method = RequestMethod.POST, value = "/examiner/{userid}/quiz/{quizid}/addQuestions")
+	public void addQuestionsToQuiz(@RequestBody ArrayList<Question> questions, @PathVariable(value = "userid") int userID, @PathVariable(value="quizid") int quizID) throws Exception {
+		System.out.println("Yay, in quiz controller!! adding questions... ");
+		System.out.println("User " + userID + "; Quiz " + quizID);
+		System.out.println(questions.get(0).toString());
+		/**
+		Optional<User> user = userRepository.findById(userID);
+		if (user != null)
+			quiz.setAuthor(user.get());
+		else
+			throw new Exception("User is unauthorized to create quiz.");
+		quizService.createQuiz(quiz);
+		*/
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{userid}/viewQuizzes")
@@ -94,6 +111,7 @@ public class QuizController {
 		return quizzes;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusYes/{id}")
 	public void updateQuiz(@PathVariable(value = "id") Integer quizID) {
@@ -102,6 +120,7 @@ public class QuizController {
 
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusNo/{id}")
 	public void updateQuiz1(@PathVariable(value = "id") Integer quizID) {
@@ -119,7 +138,7 @@ public class QuizController {
 		List<Question> questions = questionRepository.findByQuizIDOrderByNumberAsc(quizID);
 		return questions;
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{quizID}")
 	public Quiz getQuiz(@PathVariable(value = "quizID") int quizID) {
@@ -128,5 +147,14 @@ public class QuizController {
 		Quiz quiz = quizService.findById(quizID);
 		return quiz;
 	}
+
+	@Transactional
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(method=RequestMethod.GET, value="/quizByCategory/{id}")
+	public Collection<Quiz> getQuizByCategory(@PathVariable(value = "id") String id) {
+
+	    return quizRepository.findCategory(id);
+	    }
+
 
 }

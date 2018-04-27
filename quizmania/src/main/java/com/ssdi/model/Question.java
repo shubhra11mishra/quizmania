@@ -69,6 +69,9 @@ public class Question {
 		this.points = points;
 	}
 	
+	public String toString() {
+		return this.body + " (" + points + ")";
+	}
 	
 	public Quiz getQuizID() {
 		return quizID;

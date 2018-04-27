@@ -16,7 +16,14 @@
 
 <h2>Quiz Details</h2>
 {{q1}}
-<form [formGroup]="questionForm">
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+	<div style="margin-bottom: 1em">
+    <button type="submit"
+            [disabled]="questionForm.pristine || questionForm.invalid" class="btn btn-success">Save</button> &nbsp;
+    <button type="button" (click)="revert()"
+            [disabled]="questionForm.pristine" class="btn btn-danger">Reset Form</button>
+  </div>
+
 	<div formArrayName="questions" class="well well-lg">
 		<div *ngFor="let question of questions.controls; let i=index" [formGroupName]="i" >
 			<!-- repeated question object template -->
@@ -119,6 +126,7 @@
 			</div> <!-- end of essay if -->
 			<button class="btn-default" (click)="removeQuestion(i)" type="button">Remove Question</button>
 		 </div> <!-- for loop -->
+		 <br>
 		 <button class="btn-default" (click)="addMCQuestion()" type="button">Add a Multiple-Choice Question</button>
 		 <button class="btn-default" (click)="addEssayQuestion()" type="button">Add an Essay-Style Question</button>
 	</div>
@@ -127,4 +135,3 @@
 <p>Form value: {{ questionForm.value | json }}</p> 
 <p>Form status: {{ questionForm.status | json }}</p>
 <hr>
-<p>Type: {{this.questions}} </p>
