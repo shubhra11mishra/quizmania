@@ -2,14 +2,9 @@ package com.ssdi.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
@@ -29,8 +24,9 @@ public class Quiz {
     private Collection<Question> questions;
 	@ManyToOne 
 	private User author;
-    
-    public Quiz() {
+
+
+	public Quiz() {
 		super();
 		questions = new ArrayList<Question>();
 	}
@@ -126,6 +122,7 @@ public class Quiz {
 		//return questions;
 	//}
 	
+	
 	@Override 
 	public boolean equals(Object o) {
 		if (o == this) {
@@ -143,7 +140,7 @@ public class Quiz {
 		}
 		
 	}
-	
+
 	public String toString() {
 		return title + " (" + category + ")";
 	}

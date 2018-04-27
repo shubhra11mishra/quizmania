@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisteradminComponent } from './registeradmin/registeradmin.component';
 import { RegisterexaminerComponent } from './registerexaminer/registerexaminer.component';
 import { RegisterExaminerService } from './registerexaminer/registerexaminer.service';
+import {RegisterExamineeService} from './registerexaminee/registerexaminee.service';
 
 import { RegisterAdminService } from './registeradmin/registeradmin.service';
 import { LoginService } from './login/login.service';
@@ -24,13 +25,21 @@ import { ViewQuizComponent } from './viewquiz/viewquiz.component';
 import { QuizStatusComponent } from './quiz-status/quiz-status.component';
 import { QuizStatusNoComponent } from './quiz-status-no/quiz-status-no.component';
 import { ViewQuizzesComponent } from './viewquizzes/viewquizzes.component';
+import { RegisterexamineeComponent } from './registerexaminee/registerexaminee.component';
+import { ExamineeDashboardComponent } from './examinee-dashboard/examinee-dashboard.component';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { TakeQuizService } from './take-quiz/take-quiz.service';
+import { ExamineeAttemptedQuizzesComponent } from './examinee-attempted-quizzes/examinee-attempted-quizzes.component';
+import { ExamineeAttemptedQuizzesService } from './examinee-attempted-quizzes/examinee-attempted-quizzes.service';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registeradmin', component: RegisteradminComponent },
   { path: 'registerexaminer', component: RegisterexaminerComponent },
+  { path: 'registerexaminee', component: RegisterexamineeComponent },
   { path: 'admin-dashboard/:userid', component: AdminDashboardComponent },
+  { path: 'examinee-dashboard/:userid', component: ExamineeDashboardComponent },
   { path: 'examiner-dashboard/:userid', component: ExaminerDashboardComponent },
   { path: 'admin/:userid/viewpendingquizzes', component: PendingQuizComponent },
   { path: 'approved-quiz', component: ApprovedQuizComponent },
@@ -38,6 +47,8 @@ const appRoutes: Routes = [
   { path: 'quiz-status/:id', component: QuizStatusComponent },
   { path: 'quiz-status-no/:id', component: QuizStatusNoComponent },
   { path: 'examiner/:userid/createquiz', component: CreateQuizComponent },
+  { path: 'examinee/:userid/takequiz', component: TakeQuizComponent },
+  { path: 'examinee/:userid/viewmyquizzes', component: ExamineeAttemptedQuizzesComponent },
   { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent }
 ];
 
@@ -56,7 +67,11 @@ const appRoutes: Routes = [
     ViewQuizComponent,
     QuizStatusComponent,
     QuizStatusNoComponent,
-    ViewQuizzesComponent
+    ViewQuizzesComponent,
+    RegisterexamineeComponent,
+    ExamineeDashboardComponent,
+    TakeQuizComponent,
+    ExamineeAttemptedQuizzesComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +81,15 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [RegisterExaminerService, RegisterAdminService, LoginService, QuizService],
+  providers: [
+    RegisterExaminerService, 
+    RegisterAdminService, 
+    LoginService, 
+    QuizService, 
+    RegisterExamineeService,
+    TakeQuizService,
+    ExamineeAttemptedQuizzesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

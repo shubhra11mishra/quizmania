@@ -15,13 +15,14 @@
         <li role="presentation" routerLinkActive="active"><a routerLink="/registeradmin">Register Admin</a></li>
         <li role="presentation" routerLinkActive="active"><a routerLink="/registerexaminer">Register Examiner</a></li>
         <li role="presentation" routerLinkActive="active"><a routerLink="/registerexaminee">Register Examinee</a></li>
+      
       </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-<form class="form-signin" [formGroup]="registerExaminerForm" (ngSubmit)="registerExaminer()">
-  <h2 class="form-signin-heading">Register Examiner</h2>
+<form class="form-signin" [formGroup]="registerExamineeForm" (ngSubmit)="registerExaminee()">
+  <h2 class="form-signin-heading">Register Examinee</h2>
 
   <br>
   <label for="firstName" class="sr-only">First Name</label>
@@ -33,7 +34,7 @@
     placeholder="First Name"
     >
   <span class="help-block" 
-  *ngIf="!registerExaminerForm.get('firstName').valid && registerExaminerForm.get('firstName').touched">
+  *ngIf="!registerExamineeForm.get('firstName').valid && registerExamineeForm.get('firstName').touched">
   Please enter First Name
   </span>
 
@@ -47,7 +48,7 @@
     placeholder="Last Name" 
   >
   <span class="help-block" 
-  *ngIf="!registerExaminerForm.get('lastName').valid && registerExaminerForm.get('lastName').touched">
+  *ngIf="!registerExamineeForm.get('lastName').valid && registerExamineeForm.get('lastName').touched">
   Please enter Last Name
   </span>
 
@@ -61,7 +62,7 @@
     placeholder="Email address"
    >
    <span class="help-block" 
-   *ngIf="!registerExaminerForm.get('inputEmail').valid && registerExaminerForm.get('inputEmail').touched">
+   *ngIf="!registerExamineeForm.get('inputEmail').valid && registerExamineeForm.get('inputEmail').touched">
    Please enter a valid email
    </span>
 
@@ -76,7 +77,7 @@
       placeholder="Password" 
     >
     <span class="help-block" 
-     *ngIf="!registerExaminerForm.get('passwordGroup.inputPassword').valid && registerExaminerForm.get('passwordGroup.inputPassword').touched">
+     *ngIf="!registerExamineeForm.get('passwordGroup.inputPassword').valid && registerExamineeForm.get('passwordGroup.inputPassword').touched">
      Password must be 8 characters long
      </span>
 
@@ -90,23 +91,22 @@
       placeholder="Confirm Password"
     >
     <span class="help-block" 
-     *ngIf="!registerExaminerForm.get('passwordGroup.confirmPassword').valid && registerExaminerForm.get('passwordGroup.confirmPassword').touched">
+     *ngIf="!registerExamineeForm.get('passwordGroup.confirmPassword').valid && registerExamineeForm.get('passwordGroup.confirmPassword').touched">
      Password must be 8 characters long
     </span>
 
     <span class="help-block" 
-     *ngIf="!registerExaminerForm.get('passwordGroup').valid && registerExaminerForm.get('passwordGroup').touched 
-            && registerExaminerForm.get('passwordGroup.inputPassword').valid && registerExaminerForm.get('passwordGroup.confirmPassword').valid">
+     *ngIf="!registerExamineeForm.get('passwordGroup').valid && registerExamineeForm.get('passwordGroup').touched 
+            && registerExamineeForm.get('passwordGroup.inputPassword').valid && registerExamineeForm.get('passwordGroup.confirmPassword').valid">
      Passwords do not match
     </span>
    </div>
 
   <br>
-  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerExaminerForm.valid">Register</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerExamineeForm.valid">Register</button>
 
 </form>
 <br>
-<div class="alert alert-success" role="alert" *ngIf="successfull">Examiner Registered Successfully!!!</div>
-<div class="alert alert-danger" role="alert" *ngIf="invalidPasscode">Invalid Passcode. Please Try Again.</div>
+<div class="alert alert-success" role="alert" *ngIf="successfull">Examinee Registered Successfully!!!</div>
     </div>
   </div>

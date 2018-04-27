@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
             console.log(response.json());
             const url = '/examiner-dashboard/' + response.json().userID;
             this.router.navigate([url]);
+          }else if(response.json().userType === 'EXAMINEE'){
+            console.log(response.json());
+            const url = '/examinee-dashboard/' + response.json().userID;
+            this.router.navigate([url]);
           }
         }
       },

@@ -132,5 +132,15 @@ public class QuizController {
 		List<Question> questions = questionRepository.findByQuizIDOrderByNumberAsc(quizID);
 		return questions;
 	}
-
+	
+	
+	@GetMapping("/quizzes")
+	public List<Quiz> allApprovedQuizzes() {
+		return quizService.findAllApprovedQuizzes();
+	}
+	
+	@GetMapping("/examinee/{userid}/viewAttemptedQuizzes")
+	public List<Quiz> getAllAttemptedQuizzes(@PathVariable(value = "userid") int userID) throws Exception {
+		return quizService.findAllAttemptedQuizzes(userID);
+	}
 }
