@@ -29,6 +29,7 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer>{
 
 	public List<Quiz> findByAuthorOrderByTitleAsc(User user);
 	
+	//crossorigins
 	@Modifying
 	@Query("select u from Quiz u where category=?1 and status='approved'")
 	public Collection<Quiz> findCategory(String id);
