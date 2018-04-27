@@ -28,44 +28,43 @@
     <p>type: {{post.type}}</p>
     -->
     <div *ngIf="post.type == 1"> <!-- multiple-choice question w/ four choices-->
-      <div *ngIf="post.correctAnswer==='a'; else elseA">
+      <div *ngIf="post.correct_answer==='a'; else elseA">
         <input class="newLine" type="radio" value="a" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="a">{{post.choiceA}}</label>
+        <label class="choice" for="a">{{post.choicea}}</label>
       </div>
       <ng-template #elseA>
         <input class="newLine" type="radio" value="a" name="{{post.number}}" disabled>
-        <label class="choice" for="a">{{post.choiceA}}</label>
+        <label class="choice" for="a">{{post.choicea}}</label>
       </ng-template>
-
-      <div *ngIf="post.correctAnswer==='b'; else elseB">
+      <div *ngIf="post.correct_answer==='b'; else elseB">
         <input class="newLine" type="radio" value="b" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="b">{{post.choiceB}}</label>
+        <label class="choice" for="b">{{post.choiceb}}</label>
       </div>
       <ng-template #elseB>
         <input class="newLine" type="radio" value="b" name="{{post.number}}" disabled>
-        <label class="choice" for="b">{{post.choiceB}}</label>
+        <label class="choice" for="b">{{post.choiceb}}</label>
       </ng-template>
-      <div *ngIf="post.correctAnswer==='a'"></div>
+      <div *ngIf="post.correct_answer==='a'"></div>
 
-      <div *ngIf="post.correctAnswer==='c'; else elseC">
+      <div *ngIf="post.correct_answer==='c'; else elseC">
         <input class="newLine" type="radio" value="c" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="c">{{post.choiceC}}</label>
+        <label class="choice" for="c">{{post.choicec}}</label>
       </div>
       <ng-template #elseC>
         <input class="newLine" type="radio" value="c" name="{{post.number}}" disabled>
-        <label class="choice" for="c">{{post.choiceC}}</label>
+        <label class="choice" for="c">{{post.choicec}}</label>
       </ng-template>
-      <div *ngIf="post.correctAnswer==='a' || post.correctAnswer==='b'"></div>
+      <div *ngIf="post.correct_answer==='a' || post.correct_answer==='b'"></div>
 
-      <div *ngIf="post.correctAnswer==='d'; else elseD">
+      <div *ngIf="post.correct_answer==='d'; else elseD">
         <input class="newLine" type="radio" value="d" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="d">{{post.choiceD}}</label>
+        <label class="choice" for="d">{{post.choiced}}</label>
       </div>
       <ng-template #elseD>
         <input class="newLine" type="radio" value="d" name="{{post.number}}" disabled>
-        <label class="choice" for="d">{{post.choiceD}}</label>
+        <label class="choice" for="d">{{post.choiced}}</label>
       </ng-template>
-      <div *ngIf="post.correctAnswer==='a' || post.correctAnswer==='b' || post.correctAnswer==='c'"></div>
+      <div *ngIf="post.correct_answer==='a' || post.correct_answer==='b' || post.correct_answer==='c'"></div>
 
       <br>
     </div>
@@ -73,7 +72,7 @@
       <div class="row">
         <div class="col-xs-3 choice">
           Correct Answer
-          <input type="text" class="form-control displayResponse" id="answer" value="{{post.correctAnswer}}" name="answer" disabled>
+          <input type="text" class="form-control displayResponse" id="answer" value="{{post.correct_answer}}" name="answer" disabled>
         </div>
       </div>
     </div>
