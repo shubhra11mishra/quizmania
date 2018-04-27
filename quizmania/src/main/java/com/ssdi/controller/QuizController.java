@@ -63,11 +63,30 @@ public class QuizController {
 	}
 	
 	// http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' + this.quizId + '/addQuestions
+	@Transactional
 	@RequestMapping(method = RequestMethod.POST, value = "/examiner/{userid}/quiz/{quizid}/addQuestions")
-	public void addQuestionsToQuiz(@RequestBody ArrayList<Question> questions, @PathVariable(value = "userid") int userID, @PathVariable(value="quizid") int quizID) throws Exception {
+	public Question addQuestionsToQuiz(@RequestBody ArrayList<Question> questions, @PathVariable(value = "userid") int userID, @PathVariable(value="quizid") int quizID) throws Exception {
 		System.out.println("Yay, in quiz controller!! adding questions... ");
 		System.out.println("User " + userID + "; Quiz " + quizID);
 		System.out.println(questions.get(0).toString());
+		Quiz quiz = quizService.findById(quizID);
+		if (quiz != null) {
+			Question toReturn = null;
+			for (int i = 0; i < questions.size(); i++) {
+				Question q = questions.get(i);
+				q.setNumber(i+1);
+				q.setQuizID(quiz);
+				toReturn = questionRepository.save(q);
+				questionRepository.save(q);
+			}
+			quiz.setStatus("submitted");
+			quizRepository.setQuizStatus("pending", quizID);
+			return toReturn;
+		} else {
+			// quiz doesn't exist 
+			return null;
+		}
+		
 		/**
 		Optional<User> user = userRepository.findById(userID);
 		if (user != null)

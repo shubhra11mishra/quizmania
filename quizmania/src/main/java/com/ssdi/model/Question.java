@@ -16,7 +16,7 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer questionID;
 	private String body;
-	private String correctAnswer;
+	private String correct_answer;
 	private int points;
 	private int number;
 	/** type is 1 for multiple-choice questions, 
@@ -26,7 +26,7 @@ public class Question {
 	/**
 	 * choices for multiple-choice questions 
 	 */
-	private String choiceA, choiceB, choiceC, choiceD;
+	private String choicea, choiceb, choicec, choiced;
     @ManyToOne
 	private Quiz quizID;
 
@@ -34,11 +34,11 @@ public class Question {
 		super();
 	}
 	
-    public Question(Integer questionID, String body, String correctAnswer, int points, Quiz quizID) {
+    public Question(Integer questionID, String body, String correct_answer, int points, Quiz quizID) {
 		super();
 		this.questionID = questionID;
 		this.body = body;
-		this.correctAnswer = correctAnswer;
+		this.correct_answer = correct_answer;
 		this.points = points;
 		this.quizID = quizID;
 	}
@@ -55,12 +55,6 @@ public class Question {
 	}
 	public void setBody(String body) {
 		this.body = body;
-	}
-	public String getCorrectAnswer() {
-		return correctAnswer;
-	}
-	public void setCorrectAnswer(String correctAnswer) {
-		this.correctAnswer = correctAnswer;
 	}
 	public int getPoints() {
 		return points;
@@ -109,59 +103,73 @@ public class Question {
 	}
 
 	/**
-	 * @return the choiceA
+	 * @return the correct_answer
 	 */
-	public String getChoiceA() {
-		return choiceA;
+	public String getCorrect_answer() {
+		return correct_answer;
 	}
 
 	/**
-	 * @param choiceA the choiceA to set
+	 * @param correct_answer the correct_answer to set
 	 */
-	public void setChoiceA(String choiceA) {
-		this.choiceA = choiceA;
+	public void setCorrect_answer(String correct_answer) {
+		this.correct_answer = correct_answer;
 	}
 
 	/**
-	 * @return the choiceB
+	 * @return the choicea
 	 */
-	public String getChoiceB() {
-		return choiceB;
+	public String getChoicea() {
+		return choicea;
 	}
 
 	/**
-	 * @param choiceB the choiceB to set
+	 * @param choicea the choicea to set
 	 */
-	public void setChoiceB(String choiceB) {
-		this.choiceB = choiceB;
+	public void setChoicea(String choicea) {
+		this.choicea = choicea;
 	}
 
 	/**
-	 * @return the choiceC
+	 * @return the choiceb
 	 */
-	public String getChoiceC() {
-		return choiceC;
+	public String getChoiceb() {
+		return choiceb;
 	}
 
 	/**
-	 * @param choiceC the choiceC to set
+	 * @param choiceb the choiceb to set
 	 */
-	public void setChoiceC(String choiceC) {
-		this.choiceC = choiceC;
+	public void setChoiceb(String choiceb) {
+		this.choiceb = choiceb;
 	}
 
 	/**
-	 * @return the choiceD
+	 * @return the choicec
 	 */
-	public String getChoiceD() {
-		return choiceD;
+	public String getChoicec() {
+		return choicec;
 	}
 
 	/**
-	 * @param choiceD the choiceD to set
+	 * @param choicec the choicec to set
 	 */
-	public void setChoiceD(String choiceD) {
-		this.choiceD = choiceD;
+	public void setChoicec(String choicec) {
+		this.choicec = choicec;
+	}
+
+	/**
+	 * @return the choiced
+	 */
+	public String getChoiced() {
+		return choiced;
+	}
+
+	/**
+	 * @param choiced the choiced to set
+	 */
+	public void setChoiced(String choiced) {
+		this.choiced = choiced;
 	}
 	
 	

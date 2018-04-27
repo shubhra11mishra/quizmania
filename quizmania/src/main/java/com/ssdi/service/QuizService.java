@@ -29,8 +29,11 @@ public class QuizService {
 
 	public Quiz findById(Integer quizID) {
 		// TODO Auto-generated method stub
-		quizRepository.findById(quizID);
-		return null;
+		Optional<Quiz> q = quizRepository.findById(quizID);
+		if (q.get() != null) 
+			return q.get();
+		else 
+			return null;
 	}
 
 	

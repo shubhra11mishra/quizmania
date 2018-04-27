@@ -13,13 +13,12 @@
 		</div>
 	</div>
 </nav>
-
+<div *ngIf="!submitted">
 <h2>Quiz Details</h2>
-{{q1}}
 <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
 	<div style="margin-bottom: 1em">
     <button type="submit"
-            [disabled]="questionForm.pristine || questionForm.invalid" class="btn btn-success">Save</button> &nbsp;
+            [disabled]="questionForm.pristine || questionForm.invalid" class="btn btn-success">Save Quiz</button> &nbsp;
     <button type="button" (click)="revert()"
             [disabled]="questionForm.pristine" class="btn btn-danger">Reset Form</button>
   </div>
@@ -131,7 +130,13 @@
 		 <button class="btn-default" (click)="addEssayQuestion()" type="button">Add an Essay-Style Question</button>
 	</div>
 </form>
-
-<p>Form value: {{ questionForm.value | json }}</p> 
-<p>Form status: {{ questionForm.status | json }}</p>
-<hr>
+</div>
+<br>
+<div *ngIf="submitted">
+	<p class="alert alert-success" role="alert">Success! Quiz updated with questions!</p>
+	<br>
+	<div>
+    	<button type="button" class="btn btn-default" (click)="goBack();">Back to My Dashboard
+    	</button>
+	</div>
+</div>

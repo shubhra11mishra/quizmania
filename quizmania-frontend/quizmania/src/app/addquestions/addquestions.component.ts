@@ -31,6 +31,8 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
   currentQuestions;
   mcQ = [];
   endURL;
+  message = '';
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +48,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
 
   createForm() {
     // number and quizID not handled yet
+    this.submitted = false;
     this.questionForm = this.fb.group({
       questions: this.fb.array([])
       // question: this.fb.group(new Question())
@@ -170,33 +173,51 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
     //     // console.log('called update quiz in quiz service ts')
     //   );
 
-    console.log('hmm...adding questions');
+    console.log("hmm...adding questions");
     const headers = new Headers({
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     });
 
     const options = new RequestOptions({
       headers: headers
     });
-
+    this.submitted = true;
     this.endURL =
-      'http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' + this.quizId + '/addQuestions';
+      "http://localhost:4200/quizmania/examiner/" +
+      this.userId +
+      "/quiz/" +
+      this.quizId +
+      "/addQuestions";
     return this.http
       .post(this.endURL, this.fullQuestions, options)
       .toPromise()
       .then((good: Response) => {
-        console.log('added questions to quiz!');
-        return good.json;
+        console.log("added questions to quiz!");
+        if (good === null) {
+          this.message =
+              "Quiz does not exist! Please create one and add questions. ";
+            console.log("data is null");
+        }
+        console.log('re-directing user...');
+        this.endURL =
+          "http://localhost:8080/examiner-dashboard/" + this.userId;
+        console.log("done in add questions ts");
+        return this.http.get(this.endURL);
       })
       .catch((error: Response | any) => {
-        console.log('error adding questions :(');
+        console.log("hm, error adding questions :(");
         console.log(error);
         return Promise.reject(error);
       });
-
   }
 
   revert() {
     this.resetForm();
   }
+
+  goBack() {
+    this.endURL = "/examiner-dashboard/" + this.userId + "";
+    this.router.navigate([this.endURL]);
+  }
+
 }
