@@ -8,6 +8,7 @@ import com.ssdi.model.User;
 
 @Service
 public class UserService {
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -19,4 +20,7 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
+	public User getUserById(Integer id) {
+		return userRepository.findByUserID(id);
+	}
 }

@@ -3,95 +3,241 @@
     <div class="navbar-header">
       <a class="navbar-brand">Quizmania</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a>You are logged-in as ADMIN</a>
-        </li>
-        <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
-      </ul>
+    <div *ngIf="isAdmin">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a>You are logged-in as ADMIN</a>
+          </li>
+          <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
+        </ul>
+      </div>
     </div>
+
+    <div *ngIf="isExaminer">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a>You are logged-in as EXAMINER</a>
+          </li>
+          <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="isExaminee">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a>You are logged-in as EXAMINEE</a>
+          </li>
+          <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </nav>
 
-<div class="container">
-  <div class="title">{{quiz.title}}</div><hr>
-  <div class="subtitle">Subject: {{quiz.category}}</div>
-  <div class="subtitle">Time Limit: {{quiz.time_limit}}</div>
-  <hr><br>
-  <div *ngFor="let post of questions">
+<div *ngIf="isAdmin || isExaminer">
+  <!-- begin of admin and examiner users view -->
+  <div class="container">
+    <div class="title">{{quiz.title}}</div>
+    <div class="subtitle">Subject: {{quiz.category}}</div>
+    <div class="subtitle">Time Limit: {{quiz.timeLimit}} minutes</div>
+    <hr>
+    <div *ngFor="let post of questions">
+      <p class="question">{{post.number}}. {{post.body}}</p>
+      <div *ngIf="post.type == 1">
+        <!-- multiple-choice question w/ four choices-->
+        <div *ngIf="post.correct_answer==='a'; else elseA">
+          <input class="newLine" type="radio" value="a" name="{{post.number}}" checked="checked" disabled>
+          <label class="choice" for="a">{{post.choicea}}</label>
+        </div>
+        <ng-template #elseA>
+          <input class="newLine" type="radio" value="a" name="{{post.number}}" disabled>
+          <label class="choice" for="a">{{post.choicea}}</label>
+        </ng-template>
+        <div *ngIf="post.correct_answer==='b'; else elseB">
+          <input class="newLine" type="radio" value="b" name="{{post.number}}" checked="checked" disabled>
+          <label class="choice" for="b">{{post.choiceb}}</label>
+        </div>
+        <ng-template #elseB>
+          <input class="newLine" type="radio" value="b" name="{{post.number}}" disabled>
+          <label class="choice" for="b">{{post.choiceb}}</label>
+        </ng-template>
+        <div *ngIf="post.correct_answer==='a'"></div>
 
-    <p class="question">{{post.number}}. {{post.body}} </p>
-    <!-- for testing... 
-    <p>type: {{post.type}}</p>
-    -->
-    <div *ngIf="post.type == 1"> <!-- multiple-choice question w/ four choices-->
-      <div *ngIf="post.correct_answer==='a'; else elseA">
-        <input class="newLine" type="radio" value="a" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="a">{{post.choicea}}</label>
-      </div>
-      <ng-template #elseA>
-        <input class="newLine" type="radio" value="a" name="{{post.number}}" disabled>
-        <label class="choice" for="a">{{post.choicea}}</label>
-      </ng-template>
-      <div *ngIf="post.correct_answer==='b'; else elseB">
-        <input class="newLine" type="radio" value="b" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="b">{{post.choiceb}}</label>
-      </div>
-      <ng-template #elseB>
-        <input class="newLine" type="radio" value="b" name="{{post.number}}" disabled>
-        <label class="choice" for="b">{{post.choiceb}}</label>
-      </ng-template>
-      <div *ngIf="post.correct_answer==='a'"></div>
+        <div *ngIf="post.correct_answer==='c'; else elseC">
+          <input class="newLine" type="radio" value="c" name="{{post.number}}" checked="checked" disabled>
+          <label class="choice" for="c">{{post.choicec}}</label>
+        </div>
+        <ng-template #elseC>
+          <input class="newLine" type="radio" value="c" name="{{post.number}}" disabled>
+          <label class="choice" for="c">{{post.choicec}}</label>
+        </ng-template>
+        <div *ngIf="post.correct_answer==='a' || post.correct_answer==='b'"></div>
 
-      <div *ngIf="post.correct_answer==='c'; else elseC">
-        <input class="newLine" type="radio" value="c" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="c">{{post.choicec}}</label>
-      </div>
-      <ng-template #elseC>
-        <input class="newLine" type="radio" value="c" name="{{post.number}}" disabled>
-        <label class="choice" for="c">{{post.choicec}}</label>
-      </ng-template>
-      <div *ngIf="post.correct_answer==='a' || post.correct_answer==='b'"></div>
+        <div *ngIf="post.correct_answer==='d'; else elseD">
+          <input class="newLine" type="radio" value="d" name="{{post.number}}" checked="checked" disabled>
+          <label class="choice" for="d">{{post.choiced}}</label>
+        </div>
+        <ng-template #elseD>
+          <input class="newLine" type="radio" value="d" name="{{post.number}}" disabled>
+          <label class="choice" for="d">{{post.choiced}}</label>
+        </ng-template>
+        <div *ngIf="post.correct_answer==='a' || post.correct_answer==='b' || post.correct_answer==='c'"></div>
 
-      <div *ngIf="post.correct_answer==='d'; else elseD">
-        <input class="newLine" type="radio" value="d" name="{{post.number}}" checked="checked" disabled>
-        <label class="choice" for="d">{{post.choiced}}</label>
+        <br>
       </div>
-      <ng-template #elseD>
-        <input class="newLine" type="radio" value="d" name="{{post.number}}" disabled>
-        <label class="choice" for="d">{{post.choiced}}</label>
-      </ng-template>
-      <div *ngIf="post.correct_answer==='a' || post.correct_answer==='b' || post.correct_answer==='c'"></div>
-
-      <br>
-    </div>
-    <div *ngIf="post.type == 2"> <!-- essay question --> 
-      <div class="row">
-        <div class="col-xs-3 choice">
-          Correct Answer
-          <input type="text" class="form-control displayResponse" id="answer" value="{{post.correct_answer}}" name="answer" disabled>
+      <div *ngIf="post.type == 2">
+        <!-- essay question -->
+        <div class="row">
+          <div class="col-xs-3 choice">
+            Correct Answer
+            <input type="text" class="form-control displayResponse" id="answer" value="{{post.correct_answer}}" name="answer" disabled>
+          </div>
         </div>
       </div>
+      <br>
+
     </div>
-    <br>
+  </div>
+
+  <div *ngIf="isAdmin">
+    <div *ngIf="actionPending; else actionSelected;">
+      <button type='button' class="btn btn-success" (click)='onApprove();'>Approve Quiz
+      </button>
+
+      <button type='button' class='btn btn-danger' (click)='onReject();'>Reject Quiz
+      </button>
+      <br>
+      <br>
+
+      <div>
+        <button type='button' class='btn btn-default' (click)='goBack(admin);'>Back to Pending Quizzes</button>
+      </div>
+    </div>
+    <ng-template #actionSelected>
+      <button type='button' class="btn btn-success" (click)='onApprove();' disabled>Approve Quiz</button>
+
+      <button type='button' class='btn btn-danger' (click)='onReject();' disabled>Reject Quiz</button>
+      <br>
+      <form *ngIf="!submitted" (ngSubmit)="onSubmit()" #quizApproveForm="ngForm">
+        <!-- (ngSubmit)="onSubmit()" #quizActionForm="ngForm"> -->
+        <div *ngIf="quizActionApprove; else quizReject">
+          <br>
+          <p class="alert alert-info">
+
+            <strong>----Approving Quiz----</strong>
+          </p>
+          <!-- make comments optional when approving quiz -->
+          <div class="form-group col-xl-6">
+            <label for="comment">Comments/Remarks: </label>
+            <input type="text" class="form-control displayResponse" id="comment" placeholder="Optional feedback for quiz author" [(ngModel)]="model.comment"
+              name="comment" #spy>
+
+            <br>
+          </div>
+
+        </div>
+        <ng-template #quizReject>
+          <br>
+          <p class="alert alert-warning">
+            <strong>----Rejecting Quiz----</strong>
+          </p>
+          <!-- make comments mandatory when rejecting quiz -->
+          <div class="form-group col-xl-6">
+            <label for="comment">Comments/Remarks: </label>
+            <input type="text" class="form-control displayResponse" id="comment" placeholder="Required feedback for quiz author" [(ngModel)]="model.comment"
+              name="comment" required #spy>
+            <br>
+          </div>
+
+        </ng-template>
+
+        <button type="submit" class="btn btn-success" [disabled]="!quizApproveForm.form.valid" (click)='onSubmit();'>Confirm Decision</button>
+
+        <button type='button' class='btn btn-warning' (click)='cancelAction(); quizApproveForm.reset()'>Undo Action</button>
+      </form>
+    </ng-template>
 
   </div>
+  <div *ngIf="quizApproved">
+    <p class="alert alert-success">
+      <strong>Great, quiz has been approved!</strong>
+    </p>
+    <br>
+    <div>
+      <button type='button' class='btn btn-default' (click)='goBack(admin);'>Back to Pending Quizzes</button>
+    </div>
+  </div>
+  <div *ngIf="quizRejected">
+    <p class="alert alert-success">
+      <strong>Quiz has been rejected.</strong>
+    </p>
+    <br>
+    <div>
+      <button type='button' class='btn btn-default' (click)='goBack(admin);'>Back to Pending Quizzes</button>
+    </div>
+  </div>
+  <div *ngIf="isExaminer">
+    <div>
+      <button type='button' class='btn btn-default' (click)='goBack(examiner);'>Back to My Quizzes</button>
+    </div>
+  </div>
 </div>
+<!-- end of examiner & admin users view -->
 
-<div>
-  <button type='button' class="btn btn-success" (click)='approve();'>Approve Quiz
-  </button>
+<div *ngIf="isExaminee">
+  <!-- begin of examinee user view -->
+  <div class="container">
+    <div class="title">{{quiz.title}}</div>
+    <hr>
+    <div class="subtitle">Subject: {{quiz.category}}</div>
+    <div class="subtitle">Time Limit: {{quiz.time_limit}}</div>
+    <hr>
+    <br>
+    <div *ngFor="let post of questions">
+      <p class="question">{{post.number}}. {{post.body}}</p>
+      <div *ngIf="post.type == 1">
+        <!-- begin of mc question display -->
+        <!-- multiple-choice question w/ four choices-->
 
-  <button type='button' class='btn btn-danger' (click)='reject();'>Reject Quiz
-  </button>
+        <input class="newLine" type="radio" value="a" name="{{post.number}}">
+        <label class="choice" for="a">{{post.choicea}}</label>
+        <input class="newLine" type="radio" value="b" name="{{post.number}}">
+        <label class="choice" for="b">{{post.choiceb}}</label>
+        <input class="newLine" type="radio" value="c" name="{{post.number}}">
+        <label class="choice" for="c">{{post.choicec}}</label>
+        <input class="newLine" type="radio" value="d" name="{{post.number}}">
+        <label class="choice" for="d">{{post.choiced}}</label>
+        <br>
+      </div>
+      <!-- end of mc question display -->
+
+      <div *ngIf="post.type == 2">
+        <!-- begin of essay question display -->
+        <!-- essay question -->
+        <div class="row">
+          <div class="col-xs-3 choice">
+            Response:
+            <input type="text" class="form-control displayResponse" id="answer" name="user_answer">
+          </div>
+        </div>
+      </div>
+      <!-- end of essay question display -->
+      <br>
+
+    </div>
+    <!-- end of for-loop for diaplying quiz -->
+
+  </div>
+  <!-- end of div container -->
+  <div>
+    <button type='button' class='btn btn-default' (click)='goBack(examinee);'>Back to Quizzes</button>
+  </div>
+
 </div>
-
-<br>
-
-<div>
-  <button type='button' class='btn btn-default' (click)='goBack();'>Back to My Dashboard
-  </button>
-</div>
+<!-- end of examinee user view -->

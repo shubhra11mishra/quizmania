@@ -24,15 +24,21 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
   // demoQ = new Question('q1', 'a', 'b', 'c', 'd', 'a', 1, 10, 1);
   userId;
   quizId;
+
+  // yet to be used
   oldQuestions;
+  // final questions to save
   fullQuestions;
   questionForm: FormGroup;
   q1;
+  // stores current questions from front-end
   currentQuestions;
+  // stores types of each question on front-end, used to display the right fields on the front-end
   mcQ = [];
   endURL;
-  message = '';
+  message = "";
   submitted = false;
+  newForm = false;
 
   constructor(
     private fb: FormBuilder,
@@ -48,6 +54,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
 
   createForm() {
     // number and quizID not handled yet
+    this.newForm = true;
     this.submitted = false;
     this.questionForm = this.fb.group({
       questions: this.fb.array([])
@@ -121,6 +128,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
   // this.questions = [];
 
   addMCQuestion() {
+    this.newForm = false;
     this.mcQ.push(true);
     // this.q1 = this.question.makeNewQuestion(
     //   "sample q :)",
@@ -142,6 +150,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
   }
 
   addEssayQuestion() {
+    this.newForm = false;
     this.mcQ.push(false);
     // this.q1 = this.question.makeNewSimpleQuestion('sample essay question...', 'correct!', 2, 15, 2);
     this.questions.push(
@@ -151,6 +160,9 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
 
   removeQuestion(index) {
     this.questions.removeAt(index);
+    if (this.questions.length === 0) {
+      this.newForm = true;
+    }
     this.mcQ.splice(index, 1);
   }
 
@@ -182,6 +194,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
       headers: headers
     });
     this.submitted = true;
+    this.newForm = false;
     this.endURL =
       "http://localhost:4200/quizmania/examiner/" +
       this.userId +
@@ -195,12 +208,11 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
         console.log("added questions to quiz!");
         if (good === null) {
           this.message =
-              "Quiz does not exist! Please create one and add questions. ";
-            console.log("data is null");
+            "Quiz does not exist! Please create one and add questions. ";
+          console.log("data is null");
         }
-        console.log('re-directing user...');
-        this.endURL =
-          "http://localhost:8080/examiner-dashboard/" + this.userId;
+        console.log("re-directing user...");
+        this.endURL = "http://localhost:8080/examiner-dashboard/" + this.userId;
         console.log("done in add questions ts");
         return this.http.get(this.endURL);
       })
@@ -216,8 +228,7 @@ export class AddQuestionsComponent implements OnInit, OnChanges {
   }
 
   goBack() {
-    this.endURL = "/examiner-dashboard/" + this.userId + "";
+    this.endURL = "/examiner/" + this.userId + "/viewmyquizzes";
     this.router.navigate([this.endURL]);
   }
-
 }

@@ -61,6 +61,18 @@ public class QuizController {
 			throw new Exception("User is unauthorized to create quiz.");
 		quizService.createQuiz(quiz);
 	}
+
+	@Transactional
+	@RequestMapping(method = RequestMethod.POST, value = "/quiz/{quizid}/approve")
+	public void approveQuiz(@RequestBody String comment, @PathVariable(value = "quizid") int quizID) throws Exception {
+		quizRepository.setQuizStatus("approved", comment, quizID);
+	}
+
+	@Transactional
+	@RequestMapping(method = RequestMethod.POST, value = "/quiz/{quizid}/reject")
+	public void rejectQuiz(@RequestBody String comment, @PathVariable(value = "quizid") int quizID) throws Exception {
+		quizRepository.setQuizStatus("rejected", comment, quizID);
+	}
 	
 	// http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' + this.quizId + '/addQuestions
 	@Transactional
@@ -79,8 +91,8 @@ public class QuizController {
 				toReturn = questionRepository.save(q);
 				questionRepository.save(q);
 			}
-			quiz.setStatus("submitted");
-			quizRepository.setQuizStatus("pending", quizID);
+			//quiz.setStatus("pending");
+			quizRepository.setQuizStatus("pending", "", quizID);
 			return toReturn;
 		} else {
 			// quiz doesn't exist 
@@ -130,12 +142,13 @@ public class QuizController {
 		return quizzes;
 	}
 
+/**
 	@CrossOrigin(origins = "http://localhost:4200")
 	@Transactional
 	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusYes/{id}")
 	public void updateQuiz(@PathVariable(value = "id") Integer quizID) {
 
-		quizRepository.setQuizStatus("Approved", quizID);
+		quizRepository.setQuizStatus("approved", quizID);
 
 	}
 
@@ -144,10 +157,10 @@ public class QuizController {
 	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusNo/{id}")
 	public void updateQuiz1(@PathVariable(value = "id") Integer quizID) {
 
-		quizRepository.setQuizStatus("Rejected", quizID);
+		quizRepository.setQuizStatus("rejected", quizID);
 
 	}
-
+*/
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{userid}/viewquiz/{id}")
 	public List<Question> getQuizQuestionsById(@PathVariable(value = "userid") User userID,

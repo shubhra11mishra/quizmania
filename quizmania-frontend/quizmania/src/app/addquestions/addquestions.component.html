@@ -1,142 +1,152 @@
 <nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand">Quizmania</a>
-		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a>You are logged-in as Examiner</a></li>
-				<button type="button" class="btn btn-default navbar-btn"
-					routerLink="/login">Logout</button>
-			</ul>
-		</div>
-	</div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Quizmania</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a>You are logged-in as Examiner</a>
+        </li>
+        <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
+      </ul>
+    </div>
+  </div>
 </nav>
 <div *ngIf="!submitted">
-<h2>Quiz Details</h2>
-<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-	<div style="margin-bottom: 1em">
-    <button type="submit"
-            [disabled]="questionForm.pristine || questionForm.invalid" class="btn btn-success">Save Quiz</button> &nbsp;
-    <button type="button" (click)="revert()"
-            [disabled]="questionForm.pristine" class="btn btn-danger">Reset Form</button>
-  </div>
+  <h2>Quiz Details</h2>
+  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 1em">
+      <button type="submit" [disabled]="questionForm.pristine || questionForm.invalid" class="btn btn-success">Save Quiz</button> &nbsp;
+      <button type="button" (click)="revert()" [disabled]="questionForm.pristine" class="btn btn-danger">Reset Form</button>
+    </div>
 
-	<div formArrayName="questions" class="well well-lg">
-		<div *ngFor="let question of questions.controls; let i=index" [formGroupName]="i" >
-			<!-- repeated question object template -->
-			<div *ngIf="mcQ[i]===true">
-			<h4>Question #{{i + 1}}</h4>
-			<div style="margin-left: 1em;">
-				<div class="form-group">
-					<label class="center-block">Question:
-						<input class="form-control" formControlName="body" placeholder="Enter question here..." required>
-					</label>
-				</div>
-				
-				<div class="form-group">
-					<label class="center-block">Type:
-						<select class="form-control" formControlName="type" disabled required>
-							<option value=1 selected>Multiple-Choice</option>
-							<option value=2>Essay-Style</option>
-						</select>
-					</label>
-				</div>
+    <div formArrayName="questions" class="well well-lg">
+      <div *ngFor="let question of questions.controls; let i=index" [formGroupName]="i">
+        <!-- repeated question object template -->
+        <div *ngIf="mcQ[i]===true">
+          <h4>Question #{{i + 1}}</h4>
+          <div style="margin-left: 1em;">
+            <div class="form-group">
+              <label class="center-block">Question:
+                <input class="form-control" formControlName="body" placeholder="Enter question here..." required>
+              </label>
+            </div>
 
-				<div class="form-group">
-					<label class="center-block">Choice One: 
-						<input class="form-control" formControlName="choicea" placeholder="Enter Option A here..." required>
-					</label>
-				</div>
-				
-				<div class="form-group">
-					<label class="center-block">Choice Two: 
-						<input class="form-control" formControlName="choiceb" placeholder="Enter Option B here..." required>
-					</label>
-				</div>
+            <div class="form-group">
+              <label class="center-block">Type:
+                <select class="form-control" formControlName="type" disabled required>
+                  <option value=1 selected>Multiple-Choice</option>
+                  <option value=2>Essay-Style</option>
+                </select>
+              </label>
+            </div>
 
-				<div class="form-group">
-					<label class="center-block">Choice Three: 
-						<input class="form-control" formControlName="choicec" placeholder="Enter Option C here..." required>
-					</label>
-				</div>
+            <div class="form-group">
+              <label class="center-block">Choice One:
+                <input class="form-control" formControlName="choicea" placeholder="Enter Option A here..." required>
+              </label>
+            </div>
 
-				<div class="form-group">
-					<label class="center-block">Choice Four: 
-						<input class="form-control" formControlName="choiced" placeholder="Enter Option D here..." required>
-					</label>
-				</div>
+            <div class="form-group">
+              <label class="center-block">Choice Two:
+                <input class="form-control" formControlName="choiceb" placeholder="Enter Option B here..." required>
+              </label>
+            </div>
 
-				<div class="form-group">
-					<label class="center-block">Correct Answer:
-						<select class="form-control" formControlName="correct_answer" required>
-							<option value="">Please Choose One</option>
-							<option value="a">Choice One</option>
-							<option value="b">Choice Two</option>
-							<option value="c">Choice Three</option>
-							<option value="d">Choice Four</option>
-						</select>
-					</label>
-				</div>
+            <div class="form-group">
+              <label class="center-block">Choice Three:
+                <input class="form-control" formControlName="choicec" placeholder="Enter Option C here..." required>
+              </label>
+            </div>
 
-				<div class="form-group">
-					<label class="center-block">Points:
-						<input type="number" class="form-control" formControlName="points" placeholder="Enter points here..." value=5 required>
-					</label>
-				</div>
+            <div class="form-group">
+              <label class="center-block">Choice Four:
+                <input class="form-control" formControlName="choiced" placeholder="Enter Option D here..." required>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Correct Answer:
+                <select class="form-control" formControlName="correct_answer" required>
+                  <option value="">Please Choose One</option>
+                  <option value="a">Choice One</option>
+                  <option value="b">Choice Two</option>
+                  <option value="c">Choice Three</option>
+                  <option value="d">Choice Four</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Points:
+                <input type="number" class="form-control" formControlName="points" placeholder="Enter points here..." value=5 required>
+              </label>
+            </div>
 
 
-			</div> <!-- margin -->
-			</div> <!-- end of MC question -->
-			
-			<div *ngIf="mcQ[i]===false"> <!-- Essay question -->
-				<h4>Question #{{i + 1}}</h4>
-				<div style="margin-left: 1em;">
-			
-					<div class="form-group">
-						<label class="center-block">Question:
-							<input class="form-control" formControlName="body" placeholder="Enter question here..." required>
-						</label>
-					</div>
-				
-					<div class="form-group">
-						<label class="center-block">Type:
-							<select class="form-control" formControlName="type" disabled required>
-								<option value=1>Multiple-Choice</option>
-								<option value=2 selected>Essay-Style</option>
-							</select>
-						</label>
-					</div>
-					
-					<div class="form-group">
-						<label class="center-block">Correct Answer:
-							<input class="form-control" formControlName="correct_answer" placeholder="Enter the expected answer here..." required>
-						</label>
-					</div>
+          </div>
+          <!-- margin -->
+        </div>
+        <!-- end of MC question -->
 
-					<div class="form-group">
-						<label class="center-block">Points:
-							<input type="number" class="form-control" formControlName="points" placeholder="Enter points here..." required>
-						</label>
-					</div>
-       
-				</div> <!-- end of margin div -->
-			</div> <!-- end of essay if -->
-			<button class="btn-default" (click)="removeQuestion(i)" type="button">Remove Question</button>
-		 </div> <!-- for loop -->
-		 <br>
-		 <button class="btn-default" (click)="addMCQuestion()" type="button">Add a Multiple-Choice Question</button>
-		 <button class="btn-default" (click)="addEssayQuestion()" type="button">Add an Essay-Style Question</button>
-	</div>
-</form>
+        <div *ngIf="mcQ[i]===false">
+          <!-- Essay question -->
+          <h4>Question #{{i + 1}}</h4>
+          <div style="margin-left: 1em;">
+
+            <div class="form-group">
+              <label class="center-block">Question:
+                <input class="form-control" formControlName="body" placeholder="Enter question here..." required>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Type:
+                <select class="form-control" formControlName="type" disabled required>
+                  <option value=1>Multiple-Choice</option>
+                  <option value=2 selected>Essay-Style</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Correct Answer:
+                <input class="form-control" formControlName="correct_answer" placeholder="Enter the expected answer here..." required>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Points:
+                <input type="number" class="form-control" formControlName="points" placeholder="Enter points here..." required>
+              </label>
+            </div>
+
+          </div>
+          <!-- end of margin div -->
+        </div>
+        <!-- end of essay if -->
+        <button class="btn-default" (click)="removeQuestion(i)" type="button">Remove Question</button>
+      </div>
+      <!-- for loop -->
+      <br>
+      <button class="btn-default" (click)="addMCQuestion()" type="button">Add a Multiple-Choice Question</button>
+      <button class="btn-default" (click)="addEssayQuestion()" type="button">Add an Essay-Style Question</button>
+    </div>
+  </form>
 </div>
 <br>
 <div *ngIf="submitted">
-	<p class="alert alert-success" role="alert">Success! Quiz updated with questions!</p>
-	<br>
-	<div>
-    	<button type="button" class="btn btn-default" (click)="goBack();">Back to My Dashboard
-    	</button>
-	</div>
+  <p class="alert alert-success" role="alert">Success! Quiz updated with questions!</p>
+  <br>
+  <div>
+    <button type="button" class="btn btn-default" (click)="goBack();">Back to My Quizzes
+    </button>
+  </div>
+</div>
+<div *ngIf="newForm">
+  <div>
+    <button type="button" class="btn btn-default" (click)="goBack();">Cancel Adding Questions To Quiz
+    </button>
+  </div>
 </div>

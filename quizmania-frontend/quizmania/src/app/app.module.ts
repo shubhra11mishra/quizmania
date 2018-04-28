@@ -10,9 +10,8 @@ import { LoginComponent } from "./login/login.component";
 import { RegisteradminComponent } from "./registeradmin/registeradmin.component";
 import { RegisterexaminerComponent } from "./registerexaminer/registerexaminer.component";
 import { RegisterExaminerService } from "./registerexaminer/registerexaminer.service";
-
 import { RegisterAdminService } from './registeradmin/registeradmin.service';
-import { LoginService } from './login/login.service';
+import { LoginService } from './shared/login/login.service';
 import { QuizService } from './shared/quiz/quiz.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';

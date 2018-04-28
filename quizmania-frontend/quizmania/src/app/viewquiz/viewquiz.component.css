@@ -1,5 +1,5 @@
 .displayResponse {
-  width: 12em;
+  width: 25em;
   padding: 1.1em;
 }
 
@@ -16,11 +16,30 @@
 .title {
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: beige;
+  font-size: x-large;
+  color: maroon;
 }
 
 .subtitle {
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: black;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+  color: purple;
+}
+
+hr {
+  color: black;
+  size: 10px;
+  height: 2px;
+  width: 25px;
+}
+
+.ng-valid[required],
+.ng-valid.required,
+.ng-pristine {
+  border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+  border-bottom: 5px solid maroon;
 }

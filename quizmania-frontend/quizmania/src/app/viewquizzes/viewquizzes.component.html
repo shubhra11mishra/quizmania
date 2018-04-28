@@ -39,15 +39,14 @@
           <td class="text-center" style="width: 100px;">{{q.status}}</td>
           <td class="text-center" style="width: 150px;">
             <div *ngIf="q.status=='new' || q.status=='draft'">
-            <button type="button" class="btn btn-default navbar-btn"
-		routerLink="/quizmania/{{userId}}/editquiz/{{q.quizID}}/addquestions">Add Questions</button>
+              <button type="button" class="btn btn-default navbar-btn" routerLink="/quizmania/{{userId}}/editquiz/{{q.quizID}}/addquestions">Add Questions</button>
             </div>
-            <div *ngIf="q.status=='approved'">
-              <button type="button" class="btn btn-default" (click)="publish(q.quizID);">Share & Publish!
+            <div *ngIf="q.status=='Approved' || q.status=='approved'">
+              <button type="button" class="btn btn-default" routerLink="/quizmania/{{userId}}/viewquiz/{{q.quizID}}">Review
               </button>
             </div>
-            <div *ngIf="q.status=='pending' || q.status=='rejected' || q.status=='published'">
-              <button type="button" class="btn btn-default" (click)="review(q.quizID);">Review
+            <div *ngIf="q.status=='Pending' || q.status=='pending' || q.status=='Rejected' || q.status=='Published' || q.status=='rejected' || q.status=='published'">
+              <button type="button" class="btn btn-default" routerLink="/quizmania/{{userId}}/viewquiz/{{q.quizID}}">Review
               </button>
             </div>
           </td>
@@ -57,7 +56,7 @@
     </table>
   </div>
   <div>
-    <button type="button" class="btn btn-default" (click)="goBack();">My Dashboard
+    <button type="button" class="btn btn-default" (click)="goBack();">Back to My Dashboard
     </button>
 
   </div>

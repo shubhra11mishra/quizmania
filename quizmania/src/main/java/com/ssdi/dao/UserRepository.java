@@ -7,5 +7,5 @@ import com.ssdi.model.User;
 public interface UserRepository extends CrudRepository<User, Integer>{
 	public User findByEmail(String email);
 	
-	public User findByUserID(int id);
+	public User findByUserID(Integer id);
 }

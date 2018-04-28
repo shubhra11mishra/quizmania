@@ -53,7 +53,7 @@ public class QuizRepositoryTest extends ContextLoaderTest{
 	    entityManager.flush();
 	    
 	    //when
-	    repository.setQuizStatus("Approved", 1);
+	    repository.setQuizStatus("Approved", "good", 1);
 	    
 	    //then
 	    assertThat(quiz.getStatus())

@@ -29,8 +29,23 @@ public class Quiz {
     private Collection<Question> questions;
 	@ManyToOne 
 	private User author;
+	private String comment;
     
-    public Quiz() {
+    /**
+	 * @return the adminComment
+	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * @param adminComment the adminComment to set
+	 */
+	public void setComment(String adminComment) {
+		this.comment = adminComment;
+	}
+
+	public Quiz() {
 		super();
 		questions = new ArrayList<Question>();
 	}

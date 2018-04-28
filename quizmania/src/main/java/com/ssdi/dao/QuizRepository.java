@@ -21,8 +21,8 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer>{
 	
 	
 	@Modifying
-	@Query("update Quiz u set u.status=?1 where u.quizID = ?2")
-	void setQuizStatus(String status, Integer quizid);
+	@Query("update Quiz u set u.status=?1, u.comment=?2 where u.quizID = ?3")
+	void setQuizStatus(String status, String comment, Integer quizid);
 	
 	public List<Quiz> findByStatusOrderByCategoryAsc(String status);
 
