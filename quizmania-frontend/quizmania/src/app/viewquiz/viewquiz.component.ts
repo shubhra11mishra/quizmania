@@ -152,21 +152,7 @@ export class ViewQuizComponent implements OnInit {
       .post(this.endURL, this.model.comment, options)
       .toPromise()
       .then((good: Response) => {
-        console.log('posted quiz status updates, getting page.');
-
-        if (this.quizActionApprove == true) {
-          this.endURL = this.userId + '/quiz-status/' + this.quizId + '';
-          this.router.navigate([this.endURL]);
-          console.log(
-            'approved quiz ' + this.quizId + ' by user ' + this.userId
-          );
-        } else if (this.quizActionReject == true) {
-          this.endURL = this.userId + '/quiz-status-no/' + this.quizId + '';
-          this.router.navigate([this.endURL]);
-          console.log(
-            'rejected quiz ' + this.quizId + ' by user ' + this.userId
-          );
-        }
+        console.log('posted quiz status updates.');
       })
       .catch((error: Response | any) => {
         console.log('error!');
