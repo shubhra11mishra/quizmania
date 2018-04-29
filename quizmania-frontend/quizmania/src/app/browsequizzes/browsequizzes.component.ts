@@ -2,14 +2,14 @@ import { Injectable, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { QuizService } from "../shared";
-import { TakeQuizService } from "./take-quiz.service";
+import { BrowseQuizzesService } from "./browsequizzes.service";
 
 @Component({
   selector: 'app-take-quiz',
-  templateUrl: './take-quiz.component.html',
-  styleUrls: ['./take-quiz.component.css']
+  templateUrl: './browsequizzes.component.html',
+  styleUrls: ['./browsequizzes.component.css']
 })
-export class TakeQuizComponent implements OnInit {
+export class BrowseQuizzesComponent implements OnInit {
   quizzes: any[];
   userId = '';
   endURL = '';
@@ -17,7 +17,7 @@ export class TakeQuizComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private takeQuizService: TakeQuizService,
+    private browseQuizzesService: BrowseQuizzesService,
     private httpClient: HttpClient,
     private route: ActivatedRoute,
     private router: Router
@@ -45,7 +45,7 @@ export class TakeQuizComponent implements OnInit {
 
   takeQuiz(quizID){
     console.log('Going to attempt quiz:'+quizID);
-    this.takeQuizService.takeQuiz(this.userId, quizID)
+    this.browseQuizzesService.takeQuiz(this.userId, quizID)
     .subscribe(
       (response) => {this.successful = true},
       (error) => console.log(error)

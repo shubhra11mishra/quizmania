@@ -29,8 +29,8 @@ import { ViewquizBycategoryComponent } from './viewquiz-bycategory/viewquiz-byca
 import { AddQuestionsComponent } from "./addquestions/addquestions.component";
 import { RegisterexamineeComponent } from './registerexaminee/registerexaminee.component';
 import { ExamineeDashboardComponent } from './examinee-dashboard/examinee-dashboard.component';
-import { TakeQuizComponent } from './take-quiz/take-quiz.component';
-import { TakeQuizService } from './take-quiz/take-quiz.service';
+import { BrowseQuizzesComponent } from './browsequizzes/browsequizzes.component';
+import { BrowseQuizzesService } from './browsequizzes/browsequizzes.service';
 import { ExamineeAttemptedQuizzesComponent } from './examinee-attempted-quizzes/examinee-attempted-quizzes.component';
 import { ExamineeAttemptedQuizzesService } from './examinee-attempted-quizzes/examinee-attempted-quizzes.service';
 
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
   { path: ':userid/quiz-status/:id', component: QuizStatusComponent },
   { path: ':userid/quiz-status-no/:id', component: QuizStatusNoComponent },
   { path: 'examiner/:userid/createquiz', component: CreateQuizComponent },
-  { path: 'examinee/:userid/takequiz', component: TakeQuizComponent },
+  { path: 'examinee/:userid/browsequizzes', component: BrowseQuizzesComponent },
   { path: 'examinee/:userid/viewmyscores', component: ExamineeAttemptedQuizzesComponent },
   { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent },
   { path: 'viewcategories', component: ViewquizcategoriesComponent },
@@ -78,7 +78,7 @@ const appRoutes: Routes = [
     ViewQuizzesComponent,
     RegisterexamineeComponent,
     ExamineeDashboardComponent,
-    TakeQuizComponent,
+    BrowseQuizzesComponent,
     ExamineeAttemptedQuizzesComponent,
     AddQuestionsComponent,
     ViewquizcategoriesComponent,
@@ -98,7 +98,7 @@ const appRoutes: Routes = [
     LoginService, 
     QuizService, 
     RegisterExamineeService,
-    TakeQuizService,
+    BrowseQuizzesService,
     ExamineeAttemptedQuizzesService,
   ],
   bootstrap: [AppComponent]

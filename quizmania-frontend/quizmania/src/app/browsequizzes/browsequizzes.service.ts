@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class TakeQuizService {
+export class BrowseQuizzesService {
   private endURL = '';
   constructor(private httpClient: HttpClient, private http:Http) {}
 /**
