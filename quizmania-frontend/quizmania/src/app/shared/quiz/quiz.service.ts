@@ -7,7 +7,7 @@ export class QuizService {
   private endURL = '';
   constructor(private http: HttpClient) {}
 
-  // gets all quiizes depending on user id and type
+  // gets all quizzes depending on user id and type
   getAll(userid): Observable<any> {
     console.log('in quiz service ts ' + userid);
     this.endURL = 'http://localhost:8080/quizmania/' + userid + '/viewQuizzes';
@@ -15,7 +15,7 @@ export class QuizService {
     return this.http.get(this.endURL);
   }
 
-  // returns quesion for given quiz
+  // returns question for given quiz
   getAllQuestions(userid, quizid): Observable<any> {
     console.log('in quiz service ts, getting questions for quiz ' + quizid);
     this.endURL =

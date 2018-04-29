@@ -39,7 +39,7 @@ export class PendingQuizComponent implements OnInit {
         data => {
           if (data === null) {
             this.message =
-              "Unauthorized attempt to view penging quizzes. Please login before proceeding.";
+              "Unauthorized attempt to view pending quizzes. Please login before proceeding.";
             console.log("data is null");
           } else if (data.length === 0) {
             console.log("No pending quizzes");

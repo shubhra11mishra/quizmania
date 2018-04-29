@@ -1,7 +1,8 @@
 import { Injectable, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TakeQuizService } from './take-quiz.service';
+import { QuizService } from "../shared";
+import { TakeQuizService } from "./take-quiz.service";
 
 @Component({
   selector: 'app-take-quiz',
@@ -12,9 +13,10 @@ export class TakeQuizComponent implements OnInit {
   quizzes: any[];
   userId = '';
   endURL = '';
-  successfull;
+  successful;
 
   constructor(
+    private quizService: QuizService,
     private takeQuizService: TakeQuizService,
     private httpClient: HttpClient,
     private route: ActivatedRoute,
@@ -23,11 +25,18 @@ export class TakeQuizComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.userId = params['userid'];
-      this.takeQuizService.getAllApprovedQuizzes().subscribe(
+      this.userId = params["userid"];
+      console.log(this.userId);
+      // get the type of user for appropriate header
+      // To-Do!!!
+      this.quizService.getAll(this.userId).subscribe(
         data => {
+          console.log(data);
           this.quizzes = data;
-          console.log(this.quizzes);
+          console.log(
+            "view quizzes ts, got quizzes for user: " + this.userId + "!"
+          );
+          // console.log(this.quizzes)
         },
         error => console.log(error)
       );
@@ -38,7 +47,7 @@ export class TakeQuizComponent implements OnInit {
     console.log('Going to attempt quiz:'+quizID);
     this.takeQuizService.takeQuiz(this.userId, quizID)
     .subscribe(
-      (response) => {this.successfull = true},
+      (response) => {this.successful = true},
       (error) => console.log(error)
     );
   }

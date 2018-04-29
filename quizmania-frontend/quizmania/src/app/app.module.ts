@@ -50,8 +50,8 @@ const appRoutes: Routes = [
   { path: ':userid/quiz-status-no/:id', component: QuizStatusNoComponent },
   { path: 'examiner/:userid/createquiz', component: CreateQuizComponent },
   { path: 'examinee/:userid/takequiz', component: TakeQuizComponent },
-  { path: 'examinee/:userid/viewmyquizzes', component: ExamineeAttemptedQuizzesComponent },
-  { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent }
+  { path: 'examinee/:userid/viewmyscores', component: ExamineeAttemptedQuizzesComponent },
+  { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent },
   { path: 'viewcategories', component: ViewquizcategoriesComponent },
   { path: 'quizByCategory/:id', component: ViewquizBycategoryComponent },
   {
@@ -99,7 +99,7 @@ const appRoutes: Routes = [
     QuizService, 
     RegisterExamineeService,
     TakeQuizService,
-    ExamineeAttemptedQuizzesService
+    ExamineeAttemptedQuizzesService,
   ],
   bootstrap: [AppComponent]
 })
