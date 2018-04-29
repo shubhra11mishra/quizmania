@@ -5,26 +5,17 @@
 
 .question {
   font-weight: bold;
-  color: blue;
+  color: white;
+  width: 60em;
+  background-color: graytext;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 12px;
 }
 
 .choice {
   font-weight: bold;
-  color: green;
-}
-
-.title {
-  font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: x-large;
-  color: maroon;
-}
-
-.subtitle {
-  font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: large;
-  color: purple;
+  color: graytext;
 }
 
 hr {

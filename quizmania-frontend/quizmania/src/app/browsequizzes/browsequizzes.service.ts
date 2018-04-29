@@ -15,7 +15,9 @@ export class BrowseQuizzesService {
 */
   takeQuiz(userID, quizID){
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('/quizmania/examinee/'+userID+'/takequiz',quizID, {headers: headers});
+    //return this.http.post('/quizmania/examinee/'+userID+'/takequiz',quizID, {headers: headers});
+    this.endURL = 'quizmania/' + userID + '/viewquiz/' + quizID;
+    return this.httpClient.get(this.endURL);
   }
 
 }

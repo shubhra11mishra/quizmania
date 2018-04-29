@@ -44,12 +44,16 @@ export class BrowseQuizzesComponent implements OnInit {
   }
 
   takeQuiz(quizID){
-    console.log('Going to attempt quiz:'+quizID);
+    console.log('Going to attempt quiz:' + quizID);
+    /**
     this.browseQuizzesService.takeQuiz(this.userId, quizID)
     .subscribe(
       (response) => {this.successful = true},
       (error) => console.log(error)
     );
+    */
+    this.endURL = 'quizmania/' + this.userId + '/viewquiz/' + quizID;
+    this.router.navigate([this.endURL]);
   }
 
   goBack() {

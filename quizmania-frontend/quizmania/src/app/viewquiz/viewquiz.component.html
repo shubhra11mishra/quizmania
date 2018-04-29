@@ -48,7 +48,7 @@
     <div class="subtitle">Time Limit: {{quiz.timeLimit}} minutes</div>
     <hr>
     <div *ngFor="let post of questions">
-      <p class="question">{{post.number}}. {{post.body}}</p>
+      <div class="question">{{post.number}}. {{post.body}}</div>
       <div *ngIf="post.type == 1">
         <!-- multiple-choice question w/ four choices-->
         <div *ngIf="post.correct_answer==='a'; else elseA">
@@ -58,6 +58,7 @@
         <ng-template #elseA>
           <input class="newLine" type="radio" value="a" name="{{post.number}}" disabled>
           <label class="choice" for="a">{{post.choicea}}</label>
+          <div *ngIf="post.correct_answer==='c' || post.correct_answer==='d'"></div>
         </ng-template>
         <div *ngIf="post.correct_answer==='b'; else elseB">
           <input class="newLine" type="radio" value="b" name="{{post.number}}" checked="checked" disabled>
@@ -66,6 +67,7 @@
         <ng-template #elseB>
           <input class="newLine" type="radio" value="b" name="{{post.number}}" disabled>
           <label class="choice" for="b">{{post.choiceb}}</label>
+          <div *ngIf="post.correct_answer==='d'"></div>
         </ng-template>
         <div *ngIf="post.correct_answer==='a'"></div>
 
@@ -194,11 +196,9 @@
   <!-- begin of examinee user view -->
   <div class="container">
     <div class="title">{{quiz.title}}</div>
-    <hr>
     <div class="subtitle">Subject: {{quiz.category}}</div>
-    <div class="subtitle">Time Limit: {{quiz.time_limit}}</div>
+    <div class="subtitle">Time Limit: {{quiz.timeLimit}} minutes</div>
     <hr>
-    <br>
     <div *ngFor="let post of questions">
       <p class="question">{{post.number}}. {{post.body}}</p>
       <div *ngIf="post.type == 1">

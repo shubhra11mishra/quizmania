@@ -107,7 +107,7 @@ export class ViewQuizComponent implements OnInit {
       this.endURL = '/examiner/' + this.userId + '/viewmyquizzes';
     } else if (userType === 'examinee') {
       // to do!!!
-      this.endURL = '/examinee-dashboard/' + this.userId + 'viewquizzes';
+      this.endURL = '/examinee/' + this.userId + '/browsequizzes';
     } else {
       console.log('null user?');
     }
