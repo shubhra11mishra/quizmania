@@ -99,14 +99,6 @@ public class QuizController {
 			return null;
 		}
 		
-		/**
-		Optional<User> user = userRepository.findById(userID);
-		if (user != null)
-			quiz.setAuthor(user.get());
-		else
-			throw new Exception("User is unauthorized to create quiz.");
-		quizService.createQuiz(quiz);
-		*/
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -142,25 +134,6 @@ public class QuizController {
 		return quizzes;
 	}
 
-/**
-	@CrossOrigin(origins = "http://localhost:4200")
-	@Transactional
-	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusYes/{id}")
-	public void updateQuiz(@PathVariable(value = "id") Integer quizID) {
-
-		quizRepository.setQuizStatus("approved", quizID);
-
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@Transactional
-	@RequestMapping(method = RequestMethod.GET, value = "/updateStatusNo/{id}")
-	public void updateQuiz1(@PathVariable(value = "id") Integer quizID) {
-
-		quizRepository.setQuizStatus("rejected", quizID);
-
-	}
-*/
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{userid}/viewquiz/{id}")
 	public List<Question> getQuizQuestionsById(@PathVariable(value = "userid") User userID,
@@ -188,5 +161,14 @@ public class QuizController {
 	    return quizRepository.findCategory(id);
 	    }
 
+	@GetMapping("/quizzes")
+	public List<Quiz> allApprovedQuizzes() {
+		return quizService.findAllApprovedQuizzes();
+	}
+	
+	@GetMapping("/examinee/{userid}/viewAttemptedQuizzes")
+	public List<Quiz> getAllAttemptedQuizzes(@PathVariable(value = "userid") int userID) throws Exception {
+		return quizService.findAllAttemptedQuizzes(userID);
+	}
 
 }

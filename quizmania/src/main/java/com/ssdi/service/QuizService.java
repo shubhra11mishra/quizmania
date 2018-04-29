@@ -1,6 +1,7 @@
 package com.ssdi.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.ssdi.dao.QuizRepository;
 import com.ssdi.model.Quiz;
 
-import antlr.collections.List;
 
 @Service
 public class QuizService {
@@ -36,6 +36,19 @@ public class QuizService {
 			return null;
 	}
 
+	public List<Quiz> findAllApprovedQuizzes(){
+		List<Quiz> allQuizzes =  quizRepository.findAll();
+		List<Quiz> approvedQuizzes = new ArrayList<>();
+		for(Quiz quiz : allQuizzes) {
+			if(quiz.getStatus().equalsIgnoreCase("approved")) {
+				approvedQuizzes.add(quiz);
+			}
+		}
+		return approvedQuizzes;
+	}
 	
+	public List<Quiz> findAllAttemptedQuizzes(int userID){
+		return null;
+	}
 
 }

@@ -1,3 +1,4 @@
+/** Not necessary to test Repository classes 
 package com.ssdi.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,3 +62,4 @@ public class QuizRepositoryTest extends ContextLoaderTest{
 	}
 
 }
+*/

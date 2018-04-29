@@ -1,15 +1,16 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { Routes, RouterModule } from "@angular/router";
-import { HttpModule } from "@angular/http";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from "./app.component";
-import { LoginComponent } from "./login/login.component";
-import { RegisteradminComponent } from "./registeradmin/registeradmin.component";
-import { RegisterexaminerComponent } from "./registerexaminer/registerexaminer.component";
-import { RegisterExaminerService } from "./registerexaminer/registerexaminer.service";
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegisteradminComponent } from './registeradmin/registeradmin.component';
+import { RegisterexaminerComponent } from './registerexaminer/registerexaminer.component';
+import { RegisterExaminerService } from './registerexaminer/registerexaminer.service';
+import { RegisterExamineeService } from './registerexaminee/registerexaminee.service';
 import { RegisterAdminService } from './registeradmin/registeradmin.service';
 import { LoginService } from './shared/login/login.service';
 import { QuizService } from './shared/quiz/quiz.service';
@@ -26,13 +27,21 @@ import { ViewQuizzesComponent } from './viewquizzes/viewquizzes.component';
 import { ViewquizcategoriesComponent } from './viewquizcategories/viewquizcategories.component';
 import { ViewquizBycategoryComponent } from './viewquiz-bycategory/viewquiz-bycategory.component';
 import { AddQuestionsComponent } from "./addquestions/addquestions.component";
+import { RegisterexamineeComponent } from './registerexaminee/registerexaminee.component';
+import { ExamineeDashboardComponent } from './examinee-dashboard/examinee-dashboard.component';
+import { TakeQuizComponent } from './take-quiz/take-quiz.component';
+import { TakeQuizService } from './take-quiz/take-quiz.service';
+import { ExamineeAttemptedQuizzesComponent } from './examinee-attempted-quizzes/examinee-attempted-quizzes.component';
+import { ExamineeAttemptedQuizzesService } from './examinee-attempted-quizzes/examinee-attempted-quizzes.service';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registeradmin', component: RegisteradminComponent },
   { path: 'registerexaminer', component: RegisterexaminerComponent },
+  { path: 'registerexaminee', component: RegisterexamineeComponent },
   { path: 'admin-dashboard/:userid', component: AdminDashboardComponent },
+  { path: 'examinee-dashboard/:userid', component: ExamineeDashboardComponent },
   { path: 'examiner-dashboard/:userid', component: ExaminerDashboardComponent },
   { path: 'admin/:userid/viewpendingquizzes', component: PendingQuizComponent },
   { path: 'approved-quiz', component: ApprovedQuizComponent },
@@ -40,7 +49,9 @@ const appRoutes: Routes = [
   { path: ':userid/quiz-status/:id', component: QuizStatusComponent },
   { path: ':userid/quiz-status-no/:id', component: QuizStatusNoComponent },
   { path: 'examiner/:userid/createquiz', component: CreateQuizComponent },
-  { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent },
+  { path: 'examinee/:userid/takequiz', component: TakeQuizComponent },
+  { path: 'examinee/:userid/viewmyquizzes', component: ExamineeAttemptedQuizzesComponent },
+  { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent }
   { path: 'viewcategories', component: ViewquizcategoriesComponent },
   { path: 'quizByCategory/:id', component: ViewquizBycategoryComponent },
   {
@@ -65,6 +76,10 @@ const appRoutes: Routes = [
     QuizStatusComponent,
     QuizStatusNoComponent,
     ViewQuizzesComponent,
+    RegisterexamineeComponent,
+    ExamineeDashboardComponent,
+    TakeQuizComponent,
+    ExamineeAttemptedQuizzesComponent,
     AddQuestionsComponent,
     ViewquizcategoriesComponent,
     ViewquizBycategoryComponent,
@@ -78,10 +93,13 @@ const appRoutes: Routes = [
     ReactiveFormsModule
   ],
   providers: [
-    RegisterExaminerService,
-    RegisterAdminService,
-    LoginService,
-    QuizService
+    RegisterExaminerService, 
+    RegisterAdminService, 
+    LoginService, 
+    QuizService, 
+    RegisterExamineeService,
+    TakeQuizService,
+    ExamineeAttemptedQuizzesService
   ],
   bootstrap: [AppComponent]
 })

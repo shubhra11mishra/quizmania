@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Quizmania</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a>You are logged-in as Examinee</a>
+        </li>
+        <button type="button" class="btn btn-default navbar-btn" routerLink="/login">Logout</button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <table class="table table-hover">
+      <thead class="thead-inverse">
+        <tr>
+          <th class="text-center">Quiz ID</th>
+          <th class="text-center">Title</th>
+          <th class="text-center">Time Limit</th>
+          <th class="text-center">Category</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let q of quizzes">
+          <td class="text-center" style="width: 15px;">{{q.quizID}}</td>
+          <td class="text-center" style="width: 200px;">{{q.title}}</td>
+          <td class="text-center" style="width: 35px;">{{q.timeLimit}} minutes</td>
+          <td class="text-center" style="width: 50px;">{{q.category}}</td>
+          <td class="text-center" style="width: 100px;">{{q.status}}</td>
+          <td class="text-center" style="width: 150px;">
+              <button type="button" class="btn btn-default" (click)="takeQuiz(q.quizID);">View Quiz
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button type="button" class="btn btn-default" (click)="goBack();">My Dashboard
+    </button>
+
+  </div>
+
+</div>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.ssdi.dao.LoginRepository;
 import com.ssdi.model.User;
 
+
 @Service
 public class LoginService {
 	

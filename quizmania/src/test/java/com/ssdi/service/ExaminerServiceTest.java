@@ -19,22 +19,23 @@ public class ExaminerServiceTest {
 
 	@Injectable
 	private ExaminerRepository examinerRepository;
-	
+
 	@Tested
 	private ExaminerService examinerService;
-	
+
 	@Test
 	public void createExaminerServiceTest() {
 		Examiner examiner = new Examiner("TestUserFirstName", "TestUserLastName", "TestUserEmail", "TestUserPassword");
-		
+
 		new Expectations() {
 			{
 				examinerRepository.save(examiner);
+				examinerRepository.deleteByEmail(examiner.getEmail());
 			}
 		};
-		
+
 		examinerService.createExaminer(examiner);
+		examinerService.delete(examiner);
 	}
-	
-	
+
 }

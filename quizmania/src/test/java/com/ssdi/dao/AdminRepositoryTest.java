@@ -1,3 +1,4 @@
+/** Not necessary to test SPring JPA repository 
 package com.ssdi.dao;
 
 import org.junit.Test;
@@ -21,3 +22,4 @@ AdminRepository adminRepository;
 	}
 	
 }
+*/

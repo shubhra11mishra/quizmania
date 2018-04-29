@@ -15,7 +15,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssdi.context.ContextLoaderTest;
+
 import com.ssdi.model.Examiner;
+
 
 public class LoginControllerTest extends ContextLoaderTest{
 

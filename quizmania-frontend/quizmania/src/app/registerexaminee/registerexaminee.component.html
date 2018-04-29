@@ -1,0 +1,112 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">Quizmania</a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/registeradmin">Register Admin</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/registerexaminer">Register Examiner</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/registerexaminee">Register Examinee</a></li>
+      
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+<form class="form-signin" [formGroup]="registerExamineeForm" (ngSubmit)="registerExaminee()">
+  <h2 class="form-signin-heading">Register Examinee</h2>
+
+  <br>
+  <label for="firstName" class="sr-only">First Name</label>
+  <input 
+    type="text" 
+    id="firstName"
+    formControlName="firstName" 
+    class="form-control" 
+    placeholder="First Name"
+    >
+  <span class="help-block" 
+  *ngIf="!registerExamineeForm.get('firstName').valid && registerExamineeForm.get('firstName').touched">
+  Please enter First Name
+  </span>
+
+  <br>
+  <label for="lastName" class="sr-only">Last Name</label>
+  <input 
+    type="text" 
+    id="lastName" 
+    formControlName="lastName" 
+    class="form-control" 
+    placeholder="Last Name" 
+  >
+  <span class="help-block" 
+  *ngIf="!registerExamineeForm.get('lastName').valid && registerExamineeForm.get('lastName').touched">
+  Please enter Last Name
+  </span>
+
+  <br>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input 
+    type="email" 
+    id="inputEmail" 
+    formControlName="inputEmail" 
+    class="form-control" 
+    placeholder="Email address"
+   >
+   <span class="help-block" 
+   *ngIf="!registerExamineeForm.get('inputEmail').valid && registerExamineeForm.get('inputEmail').touched">
+   Please enter a valid email
+   </span>
+
+   <br>
+   <div formGroupName="passwordGroup">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input 
+      type="password" 
+      id="inputPassword" 
+      formControlName="inputPassword" 
+      class="form-control" 
+      placeholder="Password" 
+    >
+    <span class="help-block" 
+     *ngIf="!registerExamineeForm.get('passwordGroup.inputPassword').valid && registerExamineeForm.get('passwordGroup.inputPassword').touched">
+     Password must be 8 characters long
+     </span>
+
+    <br>
+    <label for="confirmPassword" class="sr-only">Confirm Password</label>
+    <input 
+      type="password" 
+      id="confirmPassword" 
+      formControlName="confirmPassword" 
+      class="form-control" 
+      placeholder="Confirm Password"
+    >
+    <span class="help-block" 
+     *ngIf="!registerExamineeForm.get('passwordGroup.confirmPassword').valid && registerExamineeForm.get('passwordGroup.confirmPassword').touched">
+     Password must be 8 characters long
+    </span>
+
+    <span class="help-block" 
+     *ngIf="!registerExamineeForm.get('passwordGroup').valid && registerExamineeForm.get('passwordGroup').touched 
+            && registerExamineeForm.get('passwordGroup.inputPassword').valid && registerExamineeForm.get('passwordGroup.confirmPassword').valid">
+     Passwords do not match
+    </span>
+   </div>
+
+  <br>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!registerExamineeForm.valid">Register</button>
+
+</form>
+<br>
+<div class="alert alert-success" role="alert" *ngIf="successfull">Examinee Registered Successfully!!!</div>
+    </div>
+  </div>
