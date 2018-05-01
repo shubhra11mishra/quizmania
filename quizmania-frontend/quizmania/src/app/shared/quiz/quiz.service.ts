@@ -47,4 +47,12 @@ export class QuizService {
     this.endURL = 'http://localhost:8080/quizmania/' + quizId;
     return this.http.get(this.endURL);
   }
+
+  takeQuiz(userID, quizID){
+    const headers = new Headers({'Content-Type': 'application/json'});
+    //return this.http.post('/quizmania/examinee/'+userID+'/takequiz',quizID, {headers: headers});
+    this.endURL = 'quizmania/' + userID + '/viewquiz/' + quizID;
+    return this.http.get(this.endURL);
+  }
+
 }
