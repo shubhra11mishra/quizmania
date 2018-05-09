@@ -73,11 +73,13 @@ public class QuizController {
 	public void rejectQuiz(@RequestBody String comment, @PathVariable(value = "quizid") int quizID) throws Exception {
 		quizRepository.setQuizStatus("rejected", comment, quizID);
 	}
-	
-	// http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' + this.quizId + '/addQuestions
+
+	// http://localhost:4200/quizmania/examiner/' + this.userId + '/quiz/' +
+	// this.quizId + '/addQuestions
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST, value = "/examiner/{userid}/quiz/{quizid}/addQuestions")
-	public Question addQuestionsToQuiz(@RequestBody ArrayList<Question> questions, @PathVariable(value = "userid") int userID, @PathVariable(value="quizid") int quizID) throws Exception {
+	public Question addQuestionsToQuiz(@RequestBody ArrayList<Question> questions,
+			@PathVariable(value = "userid") int userID, @PathVariable(value = "quizid") int quizID) throws Exception {
 		System.out.println("Yay, in quiz controller!! adding questions... ");
 		System.out.println("User " + userID + "; Quiz " + quizID);
 		System.out.println(questions.get(0).toString());
@@ -86,19 +88,19 @@ public class QuizController {
 			Question toReturn = null;
 			for (int i = 0; i < questions.size(); i++) {
 				Question q = questions.get(i);
-				q.setNumber(i+1);
+				q.setNumber(i + 1);
 				q.setQuizID(quiz);
 				toReturn = questionRepository.save(q);
 				questionRepository.save(q);
 			}
-			//quiz.setStatus("pending");
+			// quiz.setStatus("pending");
 			quizRepository.setQuizStatus("pending", "", quizID);
 			return toReturn;
 		} else {
-			// quiz doesn't exist 
+			// quiz doesn't exist
 			return null;
 		}
-		
+
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -111,8 +113,8 @@ public class QuizController {
 			user = userRepository.findById(userID).get();
 			System.out.println("User: \n" + user.getEmail());
 		} catch (NoSuchElementException e) {
-				return  null;
-//				throw new Exception("User is unauthorized to create quizzes"); 
+			return null;
+			// throw new Exception("User is unauthorized to create quizzes");
 		}
 
 		// if the user is admin, return all (pending quizzes) - need to be fixed!
@@ -147,25 +149,24 @@ public class QuizController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/{quizID}")
 	public Quiz getQuiz(@PathVariable(value = "quizID") int quizID) {
-		System.out
-				.println("In the quiz controller..., getting quiz " + quizID);
+		System.out.println("In the quiz controller..., getting quiz " + quizID);
 		Quiz quiz = quizService.findById(quizID);
 		return quiz;
 	}
 
 	@Transactional
 	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(method=RequestMethod.GET, value="/quizByCategory/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/quizByCategory/{id}")
 	public Collection<Quiz> getQuizByCategory(@PathVariable(value = "id") String id) {
 
-	    return quizRepository.findCategory(id);
-	    }
+		return quizRepository.findCategory(id);
+	}
 
 	@GetMapping("/quizzes")
 	public List<Quiz> allApprovedQuizzes() {
 		return quizService.findAllApprovedQuizzes();
 	}
-	
+
 	@GetMapping("/examinee/{userid}/viewAttemptedQuizzes")
 	public List<Quiz> getAllAttemptedQuizzes(@PathVariable(value = "userid") int userID) throws Exception {
 		return quizService.findAllAttemptedQuizzes(userID);

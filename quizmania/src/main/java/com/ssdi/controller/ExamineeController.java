@@ -35,7 +35,7 @@ public class ExamineeController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method=RequestMethod.GET, value="/quizCategories")
     public List<String> getQuizCategories() {
-        return examineeRepository.getQuizCategories();
+        return examineeRepository.getQuizCategories("approved");
     }
 	@RequestMapping(method=RequestMethod.POST, value="/{userId}/takequiz")
 	public void takeQuiz(@RequestBody int quizId, @PathVariable int userId) {

@@ -37,7 +37,7 @@ export class TakeQuizComponent implements OnInit {
   newForm = false;
   quizForm: FormGroup;
   userResponses;
-  responsesDeepCopy2: string[];
+  responsesDeepCopy = [];
 
   constructor(
     private fb: FormBuilder,
@@ -127,25 +127,28 @@ export class TakeQuizComponent implements OnInit {
   prepareSaveAttempt() {
     const formValues = this.quizForm.value;
 
+    /**
     const responsesDeepCopy: UserResponse[] = formValues.responses.map(
       (resp: UserResponse) => Object.assign({}, resp)
     );
-    /** 
+    */
     var i: number;
-    for (i = 0; i <= this.questions.length; i++) {
-      const str = formValues.responses[i].resp;
+    for (i = 0; i < this.questions.length; i++) {
+      const str = formValues.responses[i]['resp'];
       console.log(str);
-      this.responsesDeepCopy2.push(str);
+      this.responsesDeepCopy.push(str);
     }
+
     // const resps = JSON.stringify(this.responsesDeepCopy2);
     // console.log('Yo: ' + this.responsesDeepCopy2.toString());
     // console.log('Here is what we got:' + resps);
-    */
-    return responsesDeepCopy;
+    console.log('Finally: ' + this.responsesDeepCopy.toString());
+    //return this.responsesDeepCopy;
   }
 
   onSubmit() {
     this.userResponses = this.prepareSaveAttempt();
+    this.submitted = true;
     console.log('hmm...grading attempt');
     const headers = new Headers({
       'Content-Type': 'application/json',
@@ -161,7 +164,7 @@ export class TakeQuizComponent implements OnInit {
       '/takequiz/' +
       this.quizId;
     return this.http
-      .post(this.endURL, this.userResponses, options)
+      .post(this.endURL, this.responsesDeepCopy, options)
       .toPromise()
       .then((good: Response) => {
         console.log('graded attempt!');
@@ -169,7 +172,6 @@ export class TakeQuizComponent implements OnInit {
           this.message = 'Unknown user and/or quiz! ';
           console.log('bad attempt. Data is null');
         }
-        this.submitted = true;
 
         /** 
         console.log('re-directing user...');

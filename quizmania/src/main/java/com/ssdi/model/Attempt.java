@@ -28,10 +28,12 @@ public class Attempt {
 	 * @param quizID
 	 * @param userID
 	 */
-	public Attempt(Quiz quizID, User userID) {
+	public Attempt(Quiz quizID, User userID, int count) {
 		super();
 		this.quizID = quizID;
 		this.userID = userID;
+		this.count = count;
+		this.attemptDate = new Date(System.currentTimeMillis());
 	}
 
 	/**
@@ -138,5 +140,11 @@ public class Attempt {
 	public double getPercent() {
 		return percent;
 	}
-
+	
+	/**
+	 * @param maxScore the maxScore to set
+	 */
+	public void setPercent(double percent) {
+		this.percent = percent;
+	}
 }

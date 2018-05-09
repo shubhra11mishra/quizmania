@@ -14,8 +14,8 @@ public interface ExamineeRepository extends CrudRepository<Examinee, Integer> {
 	public Examinee findByEmail(String email);
 
 	@Modifying
-	@Query("select distinct category from com.ssdi.model.Quiz")
-	List<String> getQuizCategories();
+	@Query("select distinct category from com.ssdi.model.Quiz where status=?1")
+	List<String> getQuizCategories(String status);
 
 	public void deleteByEmail(String email);
 }
