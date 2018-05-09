@@ -172,8 +172,16 @@ export class TakeQuizComponent implements OnInit {
       });
   }
 
-  goBack() {
-    this.endURL = '/examinee/' + this.userId + '/browsequizzes';
-    this.router.navigate([this.endURL]);
+  goBack(pageCode) {
+    if (pageCode == 1) {
+      this.endURL = '/examinee/' + this.userId + '/browsequizzes';
+      this.router.navigate([this.endURL]);
+    } else if (pageCode == 2) {
+      this.endURL = '/examinee-dashboard/' + this.userId + '';
+      this.router.navigate([this.endURL]);
+    } else if (pageCode == 3) {
+      this.endURL = '/examinee/' + this.userId + '/myscores';
+      this.router.navigate([this.endURL]);
+    }
   }
 }
