@@ -6,16 +6,17 @@
 .question {
   font-weight: bold;
   color: white;
-  width: 60em;
-  background-color: graytext;
-  border: 2px solid black;
+  background-color: gray;
+  border-style: none none double none;
+  border-bottom: 5px solid #4a0868;
   padding: 5px;
-  border-radius: 12px;
+  
+  margin-bottom: 10px;
 }
 
 .choice {
   font-weight: bold;
-  color: graytext;
+  color: #4a0868;
 }
 
 hr {

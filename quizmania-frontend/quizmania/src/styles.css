@@ -14,14 +14,18 @@ body {
 	transition-duration: 0.4s;
 	padding: 10px;
 	border-radius: 12px;
-	border: 3px solid black;
+	border: 2px solid black;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 button:hover {
 	/**animation-delay: 0.5s;*/
-	background-color: rgba(67, 201, 67, 0.979);
-	border: 4px solid maroon;
+	background-color: white;
+	border: 4px solid #4a0868;
 	size: 125%;
+	color: black;
+	font-weight: bold;
 }
 
 table td {
@@ -29,7 +33,7 @@ table td {
 	text-align: left;
 	padding: 5px;
 	font-weight: bold;
-	vertical-align: center;
+	vertical-align: middle;
 }
 
 table td:last-child {
@@ -44,11 +48,13 @@ table tr:last-child {
 tr:nth-child(even) {
 	background-color: #888e99;
 	color: black;
+	vertical-align: middle;
 }
 
 tr:nth-child(odd) {
 	background-color: white;
 	color: black;
+	vertical-align: middle;
 }
 
 th {
@@ -91,4 +97,50 @@ table {
 	border-bottom: 2px solid #4a0868;
 	background-color: white;
 	border-radius: 10px;
+	padding: 2px;
+}
+
+.whiteBG {
+	background-color: white;
+	padding: 5px;
+	margin: 20px;
+	width: 65em;
+}
+
+.displayResponse {
+  width: 25em;
+  padding: 1.1em;
+}
+
+.question {
+  font-weight: bold;
+  color: white;
+  background-color: gray;
+  border-style: none none double none;
+  border-bottom: 5px solid #4a0868;
+  padding: 5px;
+  
+  margin-bottom: 10px;
+}
+
+.choice {
+  font-weight: bold;
+  color: #4a0868;
+}
+
+hr {
+  color: black;
+  size: 10px;
+  height: 2px;
+  width: 25px;
+}
+
+.ng-valid[required],
+.ng-valid.required,
+.ng-pristine {
+  border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+  border-bottom: 5px solid maroon;
 }

@@ -33,6 +33,7 @@ import { BrowseQuizzesComponent } from './browsequizzes/browsequizzes.component'
 import { BrowseQuizzesService } from './browsequizzes/browsequizzes.service';
 import { ExamineeAttemptedQuizzesComponent } from './examinee-attempted-quizzes/examinee-attempted-quizzes.component';
 import { ExamineeAttemptedQuizzesService } from './examinee-attempted-quizzes/examinee-attempted-quizzes.service';
+import { TakeQuizComponent } from './takequiz/takequiz.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
   {
     path: "quizmania/:userid/editquiz/:id/addquestions",
     component: AddQuestionsComponent
-  }
+  },
+  { path: 'quizmania/:userid/takequiz/:quizid', component: TakeQuizComponent },
 ];
 
 @NgModule({
@@ -83,6 +85,7 @@ const appRoutes: Routes = [
     AddQuestionsComponent,
     ViewquizcategoriesComponent,
     ViewquizBycategoryComponent,
+    TakeQuizComponent,
   ],
   imports: [
     BrowserModule,
