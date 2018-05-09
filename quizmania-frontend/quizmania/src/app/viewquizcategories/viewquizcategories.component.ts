@@ -13,12 +13,13 @@ export class ViewquizcategoriesComponent implements OnInit {
 
   categories;
   endURL='';
+  userId;
   constructor(private route: ActivatedRoute, private quizService: QuizService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     console.log('in view quizcategories ts!..');
     this.route.params.subscribe((params: Params) => {
-      
+      this.userId=params['userid']
       this.quizService.getQuizCategories().subscribe(
         data => {
           console.log(data);
@@ -33,7 +34,7 @@ export class ViewquizcategoriesComponent implements OnInit {
   }
 
   viewQuiz(post) {
-    this.endURL = '/quizByCategory/'+post ;
+    this.endURL = '/quizByCategory/'+this.userId+'/'+post ;
     this.router.navigate([this.endURL]);
     // console.log('approve...quiz ' + this.quizId + ' for user ' + this.userId);
   }

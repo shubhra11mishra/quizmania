@@ -53,8 +53,8 @@ const appRoutes: Routes = [
   { path: 'examinee/:userid/browsequizzes', component: BrowseQuizzesComponent },
   { path: 'examinee/:userid/viewmyscores', component: ExamineeAttemptedQuizzesComponent },
   { path: 'examiner/:userid/viewmyquizzes', component: ViewQuizzesComponent },
-  { path: 'viewcategories', component: ViewquizcategoriesComponent },
-  { path: 'quizByCategory/:id', component: ViewquizBycategoryComponent },
+  { path: 'examinee/:userid/viewcategories', component: ViewquizcategoriesComponent },
+  { path: 'quizByCategory/:userid/:id', component: ViewquizBycategoryComponent },
   {
     path: "quizmania/:userid/editquiz/:id/addquestions",
     component: AddQuestionsComponent
