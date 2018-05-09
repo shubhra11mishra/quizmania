@@ -48,7 +48,7 @@ export class BrowseQuizzesComponent implements OnInit {
     
     this.browseQuizzesService.takeQuiz(this.userId, quizID)
     .subscribe(
-    	console.log("okay, browse quiz service done");
+    	//console.log("okay, browse quiz service done");
       (response) => {this.successful = true},
       (error) => console.log(error)
     );

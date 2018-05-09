@@ -37,6 +37,7 @@ export class TakeQuizComponent implements OnInit {
   newForm = false;
   quizForm: FormGroup;
   userResponses;
+  responsesDeepCopy2: string[];
 
   constructor(
     private fb: FormBuilder,
@@ -129,8 +130,17 @@ export class TakeQuizComponent implements OnInit {
     const responsesDeepCopy: UserResponse[] = formValues.responses.map(
       (resp: UserResponse) => Object.assign({}, resp)
     );
-    const resps = JSON.stringify(responsesDeepCopy);
-    console.log('Here is what we got:' + resps);
+    /** 
+    var i: number;
+    for (i = 0; i <= this.questions.length; i++) {
+      const str = formValues.responses[i].resp;
+      console.log(str);
+      this.responsesDeepCopy2.push(str);
+    }
+    // const resps = JSON.stringify(this.responsesDeepCopy2);
+    // console.log('Yo: ' + this.responsesDeepCopy2.toString());
+    // console.log('Here is what we got:' + resps);
+    */
     return responsesDeepCopy;
   }
 
@@ -144,7 +154,6 @@ export class TakeQuizComponent implements OnInit {
     const options = new RequestOptions({
       headers: headers,
     });
-    this.submitted = true;
     this.newForm = false;
     this.endURL =
       'http://localhost:4200/quizmania/examinee/' +
@@ -160,10 +169,14 @@ export class TakeQuizComponent implements OnInit {
           this.message = 'Unknown user and/or quiz! ';
           console.log('bad attempt. Data is null');
         }
+        this.submitted = true;
+
+        /** 
         console.log('re-directing user...');
         this.endURL = 'http://localhost:8080/examiner-dashboard/' + this.userId;
         console.log('done in take quiz ts');
         return this.http.get(this.endURL);
+        */
       })
       .catch((error: Response | any) => {
         console.log('hmm error grading attempt :(');

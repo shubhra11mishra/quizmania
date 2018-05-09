@@ -74,13 +74,13 @@
 	<div *ngIf="submitted">
 		<p class="alert alert-success"><strong>Congratulations, your attempt has been
 			submitted for grading!</strong></p>
-
+<!-- 
 		<div class="whiteBG"
-			*ngFor="let post of questions; let resp of userResponses; let i=index">
+			*ngFor="let post of questions; let resp of responsesDeepCopy2; let i=index">
 			<p class="question">{{post.number}}. {{post.body}}</p>
 			<div *ngIf="post.type == 1">
 				<!-- begin of mc question display -->
-				<!-- multiple-choice question w/ four choices-->
+				<!-- multiple-choice question w/ four choices--
 
 				<input class="newLine" type="radio" value="a" disabled> <label
 					class="choice" for="a">{{post.choicea}}</label> <br> <input
@@ -92,24 +92,27 @@
 					class="choice" for="d">{{post.choiced}}</label> <br>
 
 			</div>
-			<!-- end of mc question display -->
+			<!-- end of mc question display --
 
 			<div *ngIf="post.type == 2">
-				<!-- begin of essay question display -->
-				<!-- essay question -->
+				<!-- begin of essay question display --
+				<!-- essay question --
 				<div class="row">
 					<div class="col-xs-3 choice">
 						Response: <input type="text" class="form-control displayResponse"
-							id="answer" value='{{resp[\"resp\"]}}' disabled>
+							id="answer" value="{{resp}}" disabled>
 					</div>
+					{{resp}}-
+					{{resp["resp"]}}--{{resp['resp']}}*------*{{resp.resp}} or resp.resp
 				</div>
 			</div>
-			<!-- end of essay question display -->
+			<!-- end of essay question display --
 			<br>
 
 		</div>
-		<!-- end of for-loop for displaying quiz -->
-		<br> <br>
+		<!-- end of for-loop for displaying quiz --
+		<br>  -->
+		<br>
 		<button type='button' class='btn btn-default' (click)='goBack(1);'>Back
 			to Quiz Catalog</button>
 		<button type="button" class="btn btn-default" (click)="goBack(2);">My
