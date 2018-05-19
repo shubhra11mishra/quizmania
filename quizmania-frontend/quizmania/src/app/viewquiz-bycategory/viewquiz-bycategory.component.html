@@ -15,8 +15,9 @@
       <td class='text-center' style='width: 35px;'>{{q.timeLimit}} minutes</td>
       <td class='text-center' style='width: 50px;'>{{q.category}}</td>
       <td class='text-center' style='width: 150px;'>
-        <button type='button' class='btn btn-default' (click)='takeQuiz(q.quizID);'>Begin Quiz
+        <button type='button' class='btn btn-default' routerLink="/quizmania/{{userId}}/takequiz/{{q.quizID}}">Begin Quiz
         </button>
+        
       </td>
     </tr>
   </table>

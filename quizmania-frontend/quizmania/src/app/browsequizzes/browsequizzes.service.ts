@@ -14,9 +14,11 @@ export class BrowseQuizzesService {
   }
 */
   takeQuiz(userID, quizID){
+  	console.log("should be in service takeQuiz()");
     const headers = new Headers({'Content-Type': 'application/json'});
     //return this.http.post('/quizmania/examinee/'+userID+'/takequiz',quizID, {headers: headers});
-    this.endURL = 'quizmania/' + userID + '/viewquiz/' + quizID;
+    console.log("making takequiz url");
+    this.endURL = 'quizmania/' + userID + '/takequiz/' + quizID;
     return this.httpClient.get(this.endURL);
   }
 
