@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
           this.notfound = true;
         } else {
           console.log(response.json().userType);
+          sessionStorage.setItem("email", this.user.email);
+          var email=sessionStorage.getItem("email");
+          console.log(email);
           if (response.json().userType === 'ADMIN') {
             const url = '/admin-dashboard/' + response.json().userID;
             this.router.navigate([url]);
